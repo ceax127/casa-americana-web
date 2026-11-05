@@ -1,0 +1,5 @@
+# Local tooling
+.claude/
+
+# Copy generated for the claude.ai preview page
+casa-americana.html

@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa Americana</title>
+<meta name="description" content="American-style single-family homes and buildings in Cajamarca, Peru, on a 100% steel earthquake-resistant structure with a shared rooftop.">
+<link rel="icon" href="assets/isotipo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E2A38;      /* Federal navy */
+    --navy-2:#2B3A4C;
+    --cream:#F6F1E8;     /* Alabaster cálido */
+    --paper:#FBF8F3;
+    --sand:#E9E0D2;
+    --brass:#B08D57;     /* Latón */
+    --brass-2:#C9A66B;
+    --sage:#8A9A82;      /* Verde salvia */
+    --ink:#22262B;
+    --muted:#6B6458;
+    --line:rgba(30,42,56,.12);
+    --serif:'Cormorant Garamond', Georgia, serif;
+    --sans:Manrope, 'Helvetica Neue', Arial, sans-serif;
+    --radius:4px;
+    --wrap:1200px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;color-scheme:light;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;font-weight:600;color:var(--brass)}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;color:var(--navy)}
+  h2{font-size:clamp(2.2rem,4.5vw,3.6rem);margin:.6rem 0 1.2rem}
+  h2 em,h1 em{font-style:italic;color:var(--brass)}
+  .lead{font-size:1.1rem;color:var(--muted);max-width:56ch}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:var(--radius);font-weight:600;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;transition:.25s;border:1px solid transparent;cursor:pointer;font-family:var(--sans)}
+  .btn-primary{background:var(--brass);color:#fff}
+  .btn-primary:hover{background:#9a7a48}
+  .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.1)}
+  .btn-dark{background:var(--navy);color:#fff}
+  .btn-dark:hover{background:var(--navy-2)}
+  section{padding:120px 0}
+
+  /* NAV */
+  .nav{position:fixed;inset:0 0 auto;z-index:50;transition:.3s;color:#fff;padding-top:env(safe-area-inset-top,0px)}
+  .nav.solid{background:rgba(251,248,243,.94);backdrop-filter:blur(10px);color:var(--navy);box-shadow:0 1px 0 var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{width:40px;height:40px}
+  .brand-name{font-family:var(--serif);font-size:1.35rem;font-weight:600;letter-spacing:.14em;line-height:1}
+  .brand-tag{display:block;font-family:var(--sans);font-size:.58rem;letter-spacing:.32em;font-weight:600;opacity:.75;margin-top:4px}
+  .nav ul{display:flex;gap:36px;list-style:none;font-size:.85rem;font-weight:500;letter-spacing:.04em}
+  .nav ul a{opacity:.85}.nav ul a:hover{opacity:1;color:var(--brass-2)}
+  .nav .btn{padding:.75rem 1.2rem}
+  .burger{display:none;background:none;border:0;color:inherit;cursor:pointer}
+
+  /* HERO */
+  .hero{position:relative;min-height:clamp(560px,82vh,780px);display:flex;align-items:flex-end;color:#fff;padding:140px 0 96px;background:var(--navy)}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,28,38,.75) 0%,rgba(20,28,38,.2) 65%),linear-gradient(180deg,rgba(20,28,38,.35) 0%,transparent 35%,rgba(20,28,38,.7) 100%)}
+  .hero .wrap{position:relative;z-index:2;width:100%}
+  .hero h1{color:#fff;font-size:clamp(3rem,7.5vw,6.4rem);max-width:13ch;margin:1rem 0 1.4rem}
+  .hero h1 em{color:var(--brass-2)}
+  .hero p{max-width:50ch;font-size:1.15rem;opacity:.9;margin-bottom:2.2rem}
+  .hero .eyebrow{color:var(--brass-2)}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-meta{position:absolute;right:24px;bottom:0;display:flex;gap:48px;font-size:.8rem;letter-spacing:.08em;opacity:.85}
+  .hero-meta b{display:block;font-family:var(--serif);font-size:2.2rem;font-weight:500;letter-spacing:0}
+
+  /* INTRO */
+  .intro .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
+  .intro-img{position:relative}
+  .intro-img img{aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);background:var(--sand)}
+  .intro-badge{position:absolute;right:-28px;bottom:40px;background:var(--navy);color:#fff;padding:28px 32px;border-radius:var(--radius);max-width:220px}
+  .intro-badge b{font-family:var(--serif);font-size:3rem;font-weight:500;color:var(--brass-2);line-height:1;display:block}
+  .intro-badge span{font-size:.82rem;opacity:.85}
+  .checks{list-style:none;margin:2rem 0 2.4rem;display:grid;gap:14px}
+  .checks li{display:flex;gap:14px;align-items:flex-start}
+  .checks svg{flex:none;margin-top:3px;color:var(--brass)}
+
+  /* ESTILOS */
+  .styles{background:var(--cream)}
+  .head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:56px;flex-wrap:wrap}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .style-card{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4.2;color:#fff;background:var(--navy-2)}
+  .style-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+  .style-card:hover img{transform:scale(1.06)}
+  .style-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(20,28,38,.85))}
+  .style-card div{position:absolute;left:24px;right:24px;bottom:24px;z-index:2}
+  .style-card h3{color:#fff;font-size:1.8rem;margin-bottom:.3rem}
+  .style-card p{font-size:.86rem;opacity:.85}
+  .style-card .num{position:absolute;top:20px;left:24px;z-index:2;font-family:var(--serif);font-size:1rem;letter-spacing:.2em;color:var(--brass-2)}
+
+
+  /* LÍNEAS */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .line-card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+  .line-img{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--navy-2)}
+  .line-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+  .line-card:hover .line-img img{transform:scale(1.05)}
+  .line-img .num{position:absolute;top:20px;left:24px;font-family:var(--serif);letter-spacing:.2em;color:#fff;background:rgba(30,42,56,.6);padding:4px 10px;border-radius:2px}
+  .line-body{padding:36px}
+  .line-body h3{font-size:2.3rem;margin:.3rem 0 .8rem}
+  .line-body p{color:var(--muted)}
+  .mini{list-style:none;margin:1.4rem 0;display:grid;gap:8px;font-size:.92rem}
+  .mini li{padding-left:22px;position:relative}
+  .mini li::before{content:"";position:absolute;left:0;top:.6em;width:10px;height:2px;background:var(--brass)}
+  .link{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);border-bottom:2px solid var(--brass);padding-bottom:4px}
+
+  /* AMENITIES */
+  .amenities{background:var(--cream)}
+  .amen-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:stretch}
+  .amen-hero{position:relative;border-radius:var(--radius);overflow:hidden;min-height:520px;background:var(--navy-2)}
+  .amen-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .amen-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(20,28,38,.85))}
+  .amen-cap{position:absolute;left:32px;right:32px;bottom:28px;z-index:2}
+  .amen-cap h3{color:#fff;font-size:2rem;margin-top:.4rem}
+  .amen-cap .eyebrow{color:var(--brass-2)}
+  .amen-list{list-style:none;display:grid;gap:4px}
+  .amen-list li{display:flex;gap:18px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
+  .amen-list li:last-child{border-bottom:0}
+  .amen-list .ic{flex:none;width:48px;height:48px;border-radius:50%;background:#fff;display:grid;place-items:center;color:var(--brass)}
+  .amen-list h4{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--navy)}
+  .amen-list p{font-size:.9rem;color:var(--muted)}
+
+  /* MODELOS */
+  .models-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .model{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.3s}
+  .model:hover{transform:translateY(-6px);box-shadow:0 24px 48px -24px rgba(30,42,56,.25)}
+  .model img{aspect-ratio:16/11;object-fit:cover;width:100%;background:var(--sand)}
+  .model-body{padding:28px}
+  .model-tag{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);font-weight:700}
+  .model h3{font-size:1.9rem;margin:.3rem 0 1rem}
+  .specs{display:flex;gap:22px;font-size:.84rem;color:var(--muted);padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:18px}
+  .specs b{color:var(--navy);font-weight:700}
+  .price{display:flex;justify-content:space-between;align-items:center}
+  .price small{display:block;font-size:.72rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+  .price strong{font-family:var(--serif);font-size:1.6rem;font-weight:600;color:var(--navy)}
+  .arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:.25s}
+  .model:hover .arrow{background:var(--brass);border-color:var(--brass);color:#fff}
+
+  /* PROCESO */
+  .process{background:var(--navy);color:#fff}
+  .process h2{color:#fff}
+  .process .lead{color:rgba(255,255,255,.7)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;border-top:1px solid rgba(255,255,255,.15)}
+  .step{padding:40px 32px 0 0}
+  .step + .step{padding-left:32px;border-left:1px solid rgba(255,255,255,.15)}
+  .step span{font-family:var(--serif);font-size:3.4rem;color:var(--brass-2);line-height:1}
+  .step h3{color:#fff;font-size:1.6rem;margin:1rem 0 .6rem}
+  .step p{font-size:.92rem;color:rgba(255,255,255,.7)}
+
+  /* CALIDAD */
+  .quality .wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .feat{display:grid;grid-template-columns:1fr 1fr;gap:36px 32px;margin-top:2rem}
+  .feat h4{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--navy);margin:.8rem 0 .3rem}
+  .feat p{font-size:.9rem;color:var(--muted)}
+  .feat .ic{width:48px;height:48px;border-radius:50%;background:var(--cream);display:grid;place-items:center;color:var(--brass)}
+  .quality-img{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .quality-img img{border-radius:var(--radius);object-fit:cover;width:100%;height:100%;background:var(--sand)}
+  .quality-img img:first-child{grid-row:span 2;aspect-ratio:3/5}
+  .quality-img img:not(:first-child){aspect-ratio:1}
+
+  /* TESTIMONIO */
+  .quote{background:var(--cream);text-align:center}
+  .quote blockquote{font-family:var(--serif);font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1.3;color:var(--navy);max-width:28ch;margin:1.5rem auto 2rem;font-style:italic}
+  .quote cite{font-style:normal;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .stars{color:var(--brass);letter-spacing:.3em}
+
+  /* CONTACTO */
+  .contact .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:80px}
+  .contact-info p{margin-bottom:1rem}
+  .contact-info dl{margin-top:2.4rem;display:grid;gap:22px}
+  .contact-info dt{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);font-weight:700}
+  .contact-info dd{font-family:var(--serif);font-size:1.4rem;color:var(--navy)}
+  form{background:#fff;border:1px solid var(--line);padding:44px;border-radius:var(--radius);display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  form .full{grid-column:1/-1}
+  label{display:block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-bottom:8px}
+  input,select,textarea{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:var(--radius);font:inherit;background:var(--paper);color:var(--ink)}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--brass);outline-offset:-1px}
+  textarea{min-height:110px;resize:vertical}
+  .form-ok{display:none;grid-column:1/-1;color:var(--sage);font-weight:600}
+
+  /* FOOTER */
+  footer{background:#151D27;color:rgba(255,255,255,.7);padding:72px 0 32px;font-size:.9rem}
+  footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.1)}
+  footer h5{color:#fff;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
+  footer ul{list-style:none;display:grid;gap:10px}
+  footer a:hover{color:var(--brass-2)}
+  footer .brand{color:#fff;margin-bottom:18px}
+  .legal{display:flex;justify-content:space-between;padding-top:24px;font-size:.8rem;flex-wrap:wrap;gap:12px}
+
+  /* CTA móvil fija */
+  .sticky-cta{display:none}
+
+  /* Animación de entrada */
+  @media (prefers-reduced-motion:no-preference){.reveal.in{animation:rise .8s ease both}}
+  @keyframes rise{from{transform:translateY(18px)}to{transform:none}}
+
+  @media (max-width:1000px){
+    section{padding:88px 0}
+    .nav ul,.nav .btn{display:none}
+    .burger{display:block}
+    .nav.open ul{display:flex;position:absolute;top:84px;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);color:var(--navy);padding:8px 24px 20px;box-shadow:0 12px 24px -12px rgba(0,0,0,.2)}
+    .nav.open ul a{display:block;padding:12px 0;border-bottom:1px solid var(--line)}
+    .intro .wrap,.quality .wrap,.contact .wrap{grid-template-columns:1fr;gap:56px}
+    .intro-badge{right:16px}
+    .grid4{grid-template-columns:1fr 1fr}
+    .models-grid{grid-template-columns:1fr}
+    .grid2,.amen-grid{grid-template-columns:1fr}
+    .amen-hero{min-height:360px}
+    .steps{grid-template-columns:1fr 1fr}
+    .step:nth-child(3){padding-left:0;border-left:0}
+    footer .cols{grid-template-columns:1fr 1fr}
+    .hero-meta{display:none}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 16px}
+    .grid4,.steps,.feat{grid-template-columns:1fr}
+    .step,.step + .step{padding:32px 0 0;border-left:0}
+    form{grid-template-columns:1fr;padding:28px 20px}
+    .line-body{padding:24px}
+    footer .cols{grid-template-columns:1fr}
+    .brand-name{font-size:1.1rem}
+    .sticky-cta{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;gap:10px}
+    .sticky-cta a{flex:1;justify-content:center;padding:.95rem}
+    body{padding-bottom:76px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable logo mark -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 64 70">
+    <g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M6 28 L32 4 L58 28 V62 H6 Z"/>
+      <line x1="16" y1="40" x2="48" y2="40"/><line x1="16" y1="47" x2="48" y2="47"/><line x1="16" y1="54" x2="48" y2="54"/>
+    </g>
+    <path fill="#C9A66B" d="M32 15 L33.18 18.38 L36.76 18.45 L33.9 20.62 L34.94 24.05 L32 22 L29.06 24.05 L30.1 20.62 L27.24 18.45 L30.82 18.38 Z"/>
+  </symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#" class="brand" aria-label="Casa Americana home">
+      <svg><use href="#mark"/></svg>
+      <span class="brand-name">CASA AMERICANA<span class="brand-tag">PREMIUM CONSTRUCTION</span></span>
+    </a>
+    <ul>
+      <li><a href="#lines">Homes</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#structure">Structure</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary">Book a visit</a>
+    <button class="burger" aria-label="Open menu" onclick="document.getElementById('nav').classList.toggle('open')">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="assets/img/1558036117-15d82a90b9b1.jpg" alt="American-style home on a green hillside at sunset" style="object-position:62% center">
+  <div class="wrap">
+    <span class="eyebrow">Cajamarca, Peru · 2,750 m above sea level</span>
+    <h1>The American home, <em>built in the Andes.</em></h1>
+    <p>Single-family homes and American-style buildings in the mountains of Cajamarca, on a 100% steel, earthquake-resistant structure, with shared amenities and premium finishes.</p>
+    <div class="hero-actions">
+      <a href="#lines" class="btn btn-primary">Explore homes
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#contact" class="btn btn-ghost">Get a quote</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <div><b>100%</b>Steel structure</div>
+    <div><b>10</b>Year warranty</div>
+    <div><b>2</b>Product lines</div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="wrap">
+    <div class="intro-img reveal">
+      <img src="assets/img/1600607687939-ce8a6c25118c.jpg" alt="Open-concept living room with natural light">
+      <div class="intro-badge"><b>Steel</b><span>Structural frame engineered to withstand earthquakes.</span></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Our philosophy</span>
+      <h2>Quiet luxury. <em>Built to last.</em></h2>
+      <p class="lead">We take the best of American homebuilding (open layouts, generous porches, the kitchen at the heart of the home) and adapt it to the Cajamarca valley: its altitude, its cool nights and its sunny days.</p>
+      <ul class="checks">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span><b>100% steel structure</b>: lighter, faster to build and safer in an earthquake.</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span><b>Built for mountain weather</b> with continuous insulation, double glazing and a fireplace-ready living room.</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span><b>Fixed price</b> and a contractual schedule. No surprises.</span></li>
+      </ul>
+      <a href="#process" class="btn btn-dark">See how we work</a>
+    </div>
+  </div>
+</section>
+
+<section class="styles" id="lines">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">Our homes</span><h2>Two ways to live <em>the American way.</em></h2></div>
+      <p class="lead">Both share the same DNA: an earthquake-resistant steel structure, American design and premium finishes, with views of the Andes.</p>
+    </div>
+    <div class="grid2">
+      <article class="line-card reveal">
+        <div class="line-img"><img src="assets/img/1570129477492-45c003edd2be.jpg" alt="Premium American single-family home with wraparound porch" loading="lazy"><span class="num">01</span></div>
+        <div class="line-body">
+          <span class="model-tag">Premium homes</span>
+          <h3>Single Family House</h3>
+          <p>A premium American home on your own land: welcoming porch, chef’s kitchen, a primary suite with spa bath and covered terraces facing the mountains.</p>
+          <ul class="mini">
+            <li>3 to 5 bedrooms · 250 to 500 m²</li>
+            <li>Three-car garage, landscaped grounds and outdoor fire pit</li>
+            <li>Architect-designed and fully customizable</li>
+          </ul>
+          <a href="#projects" class="link">See models <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="line-card reveal">
+        <div class="line-img"><img src="assets/img/1580041065738-e72023775cdc.jpg" alt="Luxury residential building with pool and landscaped gardens" loading="lazy"><span class="num">02</span></div>
+        <div class="line-body">
+          <span class="model-tag">Luxury residences</span>
+          <h3>American Style Building</h3>
+          <p>Boutique luxury residences inspired by upscale American buildings: floor-to-ceiling windows, private terraces, a concierge lobby and a shared rooftop overlooking the valley.</p>
+          <ul class="mini">
+            <li>1 to 3 bedroom residences and penthouses · 90 to 220 m²</li>
+            <li>Rooftop with common areas and amenities</li>
+            <li>Imported finishes, smart home and private parking</li>
+          </ul>
+          <a href="#amenities" class="link">See amenities <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">Featured projects</span><h2>Find <em>your place.</em></h2></div>
+      <a href="#contact" class="btn btn-dark">Full catalog</a>
+    </div>
+    <div class="models-grid">
+      <a class="model reveal" href="#contact">
+        <img src="assets/img/1568605114967-8130f3a36994.jpg" alt="The Carolina, modern farmhouse estate" loading="lazy">
+        <div class="model-body">
+          <span class="model-tag">Single Family · Modern Farmhouse</span>
+          <h3>The Carolina</h3>
+          <div class="specs"><span><b>4</b> bed</span><span><b>4.5</b> bath</span><span><b>340</b> m²</span></div>
+          <div class="price"><div><small>From</small><strong>US$ 395,000</strong></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+      <a class="model reveal" href="#contact">
+        <img src="assets/img/1600585154340-be6161a56a0c.jpg" alt="The Savannah, contemporary estate" loading="lazy">
+        <div class="model-body">
+          <span class="model-tag">Single Family · Contemporary</span>
+          <h3>The Savannah</h3>
+          <div class="specs"><span><b>5</b> bed</span><span><b>5.5</b> bath</span><span><b>480</b> m²</span></div>
+          <div class="price"><div><small>From</small><strong>US$ 540,000</strong></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+      <a class="model reveal" href="#contact">
+        <img src="assets/img/1527030280862-64139fba04ca.jpg" alt="The Madison Residences, luxury building with landscaped terraces" loading="lazy">
+        <div class="model-body">
+          <span class="model-tag">American Style Building</span>
+          <h3>The Madison Residences</h3>
+          <div class="specs"><span><b>1–3</b> bed</span><span><b>24</b> residences</span><span><b>90–220</b> m²</span></div>
+          <div class="price"><div><small>From</small><strong>US$ 165,000</strong></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="amenities" id="amenities">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">Amenities</span><h2>The rooftop, <em>your new living room.</em></h2></div>
+      <p class="lead">Our buildings are crowned by a shared rooftop designed for the community: a place to work, train, celebrate and unwind with views of the Cajamarca valley and the surrounding mountains.</p>
+    </div>
+    <div class="amen-grid">
+      <div class="amen-hero reveal">
+        <img src="assets/img/1544984243-ec57ea16fe25.jpg" alt="Rooftop terrace at sunset overlooking the hills" loading="lazy" style="object-position:center 80%">
+        <div class="amen-cap"><span class="eyebrow">Shared rooftop</span><h3>Lounge terrace with mountain views</h3></div>
+      </div>
+      <ul class="amen-list reveal">
+        <li><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c2 3 4 5 4 8a4 4 0 0 1-8 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 0-7zM5 21h14"/></svg></span><div><h4>Fire pit lounge</h4><p>Gather around the fire on cool Andean evenings.</p></div></li>
+        <li><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11h16M6 11l1 9h10l1-9M9 7c0-1 1-2 1-3m4 3c0-1 1-2 1-3"/></svg></span><div><h4>BBQ and outdoor dining</h4><p>Grills, communal tables and a bar for get-togethers.</p></div></li>
+        <li><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="12" rx="1"/><path d="M8 21h8M12 17v4"/></svg></span><div><h4>Coworking and meeting room</h4><p>High-speed wifi and quiet space to work from home.</p></div></li>
+        <li><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg></span><div><h4>Fitness center</h4><p>Cardio, weights and an open-air yoga deck.</p></div></li>
+        <li><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c-3 4-3 8 0 12 3-4 3-8 0-12zM4 21h16M12 15v6"/></svg></span><div><h4>Kids, pets and gardens</h4><p>Play area, pet zone and a shared vegetable garden.</p></div></li>
+        <li><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-4h6v4M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/></svg></span><div><h4>Concierge lobby and 24/7 security</h4><p>Doorman, access control and private parking.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <span class="eyebrow">How we work</span>
+    <h2>From idea to keys, <em>in 4 steps.</em></h2>
+    <p class="lead">One team, one contract. Design, permits, construction and handover under a single responsibility.</p>
+    <div class="steps">
+      <div class="step reveal"><span>01</span><h3>Consultation</h3><p>We learn about your lot, budget and goals, whether you want to live or invest. Free site visit.</p></div>
+      <div class="step reveal"><span>02</span><h3>Design</h3><p>Plans, structural engineering and 3D renders. Choose your finishes at our showroom.</p></div>
+      <div class="step reveal"><span>03</span><h3>Construction</h3><p>Steel is fabricated to measure and assembled on site: less time, less waste.</p></div>
+      <div class="step reveal"><span>04</span><h3>Handover</h3><p>Turnkey delivery with a 10-year structural warranty and after-sales service.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="quality" id="structure">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Steel structure</span>
+      <h2>Steel that protects <em>what matters most.</em></h2>
+      <p class="lead">Cajamarca sits in an active seismic zone. Every home and building we make stands on a 100% steel frame, the system of choice in earthquake country from California to Japan.</p>
+      <div class="feat">
+        <div><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16M4 20h16M8 4v16M16 4v16M8 9l8 6M16 9l-8 6"/></svg></div><h4>100% steel frame</h4><p>Galvanized steel profiles with certified structural calculations.</p></div>
+        <div><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12h3l2-5 3 10 3-14 3 12 2-3h4"/></svg></div><h4>Earthquake resistant</h4><p>Steel is ductile: it flexes and absorbs a quake's energy instead of cracking.</p></div>
+        <div><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg></div><h4>Warm at altitude</h4><p>Continuous insulation and low-E double glazing for cold mountain nights.</p></div>
+        <div><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>10-year warranty</h4><p>Structural coverage by contract, plus first-year maintenance.</p></div>
+      </div>
+    </div>
+    <div class="quality-img reveal">
+      <img src="assets/img/1504307651254-35680f356dfd.jpg" alt="Structure being assembled on site" loading="lazy">
+      <img src="assets/img/1556912173-3bb406ef7e77.jpg" alt="American-style kitchen with premium finishes" loading="lazy">
+      <img src="assets/img/1600210492486-724fe5c67fb0.jpg" alt="Bright living room" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="wrap reveal">
+    <div class="stars">★★★★★</div>
+    <blockquote>“We wanted a home like the ones we saw in Colorado, with mountain views and peace of mind when the ground shakes. Casa Americana delivered both.”</blockquote>
+    <cite>The Rodríguez family · The Savannah model</cite>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-info reveal">
+      <span class="eyebrow">Let's talk</span>
+      <h2>Start building <em>your story.</em></h2>
+      <p class="lead">Visit our showroom in Cajamarca, tour a project under construction, or book a free assessment of your lot.</p>
+      <dl>
+        <div><dt>Phone / WhatsApp</dt><dd>+51 900 000 000</dd></div>
+        <div><dt>Email</dt><dd>hello@casaamericana.pe</dd></div>
+        <div><dt>Showroom</dt><dd>Av. Principal 123, Cajamarca, Peru</dd></div>
+      </dl>
+    </div>
+    <form class="reveal" onsubmit="event.preventDefault();this.querySelector('.form-ok').style.display='block';this.reset()">
+      <div><label for="n">Name</label><input id="n" required placeholder="Your name"></div>
+      <div><label for="t">Phone</label><input id="t" type="tel" placeholder="+51 ..."></div>
+      <div class="full"><label for="e">Email</label><input id="e" type="email" required placeholder="you@example.com"></div>
+      <div><label for="s">I'm interested in</label>
+        <select id="s"><option>Single Family House</option><option>Luxury residence in an American Style Building</option><option>Investment / buy to rent</option><option>Not sure yet</option></select></div>
+      <div><label for="p">Budget</label>
+        <select id="p"><option>US$ 150k – 200k</option><option>US$ 200k – 400k</option><option>US$ 400k – 600k</option><option>US$ 600k+</option></select></div>
+      <div class="full"><label for="m">Tell us about your project</label><textarea id="m" placeholder="Do you already own a lot? Are you looking to live or invest?"></textarea></div>
+      <div class="full"><button class="btn btn-primary" type="submit">Request a quote</button></div>
+      <p class="form-ok">Thank you! We'll get back to you within 24 hours.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a href="#" class="brand"><svg width="40" height="40"><use href="#mark"/></svg><span class="brand-name">CASA AMERICANA<span class="brand-tag">PREMIUM CONSTRUCTION</span></span></a>
+        <p>American-style homes and buildings in Cajamarca, on an earthquake-resistant steel structure.</p>
+      </div>
+      <div><h5>Homes</h5><ul><li><a href="#lines">Single Family House</a></li><li><a href="#lines">American Style Building</a></li><li><a href="#amenities">Amenities</a></li><li><a href="#structure">Steel structure</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="#process">Process</a></li><li><a href="#structure">Quality</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h5>Follow us</h5><ul><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">YouTube</a></li><li><a href="#">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Casa Americana. All rights reserved.</span><span>Preview site · Images for reference only</span></div>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a href="#contact" class="btn btn-primary">Get a quote</a>
+  <a href="#contact" class="btn btn-dark">WhatsApp</a>
+</div>
+
+<script>
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('solid', scrollY > 60);
+  addEventListener('scroll', onScroll); onScroll();
+  document.querySelectorAll('.nav ul a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && e.boundingClientRect.top > innerHeight * .6) { e.target.classList.add('in'); } io.unobserve(e.target); }), {threshold:.01});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

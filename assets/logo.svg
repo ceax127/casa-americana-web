@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" role="img" aria-label="Casa Americana — Premium Construction">
+  <!-- Isotipo: casa a dos aguas + estrella + revestimiento horizontal (lap siding / franjas) -->
+  <g fill="none" stroke="#1E2A38" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" transform="translate(4 8)">
+    <path d="M6 28 L32 4 L58 28 V62 H6 Z"/>
+    <line x1="16" y1="40" x2="48" y2="40"/>
+    <line x1="16" y1="47" x2="48" y2="47"/>
+    <line x1="16" y1="54" x2="48" y2="54"/>
+  </g>
+  <path transform="translate(4 8)" fill="#B08D57" d="M32 15 L33.18 18.38 L36.76 18.45 L33.9 20.62 L34.94 24.05 L32 22 L29.06 24.05 L30.1 20.62 L27.24 18.45 L30.82 18.38 Z"/>
+  <!-- Logotipo -->
+  <text x="84" y="44" font-family="'Cormorant Garamond', Georgia, serif" font-size="32" font-weight="600" letter-spacing="3" fill="#1E2A38">CASA AMERICANA</text>
+  <line x1="84" y1="56" x2="112" y2="56" stroke="#B08D57" stroke-width="2"/>
+  <text x="120" y="60" font-family="Manrope, 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="4.2" fill="#6B6458">PREMIUM CONSTRUCTION</text>
+</svg>
