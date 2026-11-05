@@ -430,7 +430,7 @@
   /* CALCULADORA */
   .calc{background:var(--cream)}
   .calc-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-  .calc-form{background:#fff;border:0;border-radius:0;padding:clamp(24px,3vw,40px)}
+  .calc-form{align-content:start;background:#fff;border:0;border-radius:0;padding:clamp(24px,3vw,40px)}
   .calc-form output{float:right;color:var(--navy);font-weight:700;letter-spacing:.04em}
   input[type=range]{padding:0;border:0;background:none;accent-color:var(--brass);height:28px}
   .calc-out{background:var(--navy);color:#fff;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:14px}
@@ -455,6 +455,47 @@
     .why-grid{grid-template-columns:1fr}
     .avail-count{margin-left:0;width:100%}
     .seg button{padding:.5rem .7rem}
+  }
+
+  /* ESTÁNDAR CASA AMERICANA */
+  .std-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:clamp(28px,4vw,48px)}
+  .std-stats > div{padding:22px 20px}
+  .std-stats > div + div{border-left:1px solid var(--line)}
+  .std-stats b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,1.5rem + 1.2vw,2.6rem);color:var(--navy);line-height:1;font-variant-numeric:lining-nums}
+  .std-stats span{display:block;margin-top:.5rem;font-size:.85rem;color:var(--muted)}
+  .std-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .std-tabs button{background:#fff;border:1px solid var(--line);border-radius:999px;padding:.6rem 1.1rem;font:600 .82rem/1 var(--sans);color:var(--muted);cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+  .std-tabs button:hover{color:var(--navy);border-color:rgba(30,42,56,.3)}
+  .std-tabs button[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+  .std-tabs button .n{margin-left:6px;opacity:.6;font-weight:500}
+  .std-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
+  .std-list li{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px 14px 44px;font-size:.93rem;color:var(--ink);transition:border-color .2s ease,transform .2s ease}
+  .std-list li:hover{border-color:var(--brass);transform:translateY(-2px)}
+  .std-list li::before{content:"";position:absolute;left:16px;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;background:var(--brass) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/10px no-repeat}
+  .std-list.fade{animation:stdIn .35s ease}
+  @keyframes stdIn{from{opacity:0;transform:translateY(6px)}}
+
+  /* ESTIMADOR DE RENTA */
+  .calc-range{color:rgba(255,255,255,.7);font-size:.9rem;margin-top:-6px}
+  .madison-only[hidden]{display:none}
+
+  /* CÓMO COMPRAR */
+  .buy-steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:none}
+  .buy-steps li{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;transition:transform .3s ease,box-shadow .3s ease}
+  .buy-steps li:hover{transform:translateY(-4px);box-shadow:0 24px 48px -28px rgba(30,42,56,.35)}
+  .buy-n{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--serif);font-size:1.3rem;font-variant-numeric:lining-nums}
+  .buy-steps h3{font-size:1.6rem;margin:1rem 0 .4rem}
+  .buy-steps p{color:var(--muted);font-size:.95rem}
+  .buy-steps b{color:var(--navy)}
+  .buy-terms{display:flex;gap:12px;align-items:flex-start;margin-top:20px;padding:16px 18px;border-radius:var(--radius);background:#f3e8d6;color:#6f5428;font-size:.92rem}
+  .buy-terms svg{flex:none;margin-top:2px}
+  .price-note{display:block;margin-top:4px;font-size:.78rem;color:var(--muted)}
+
+  @media (max-width:1000px){
+    .std-stats{grid-template-columns:1fr 1fr}
+    .std-stats > div:nth-child(3){border-left:0}
+    .std-stats > div:nth-child(n+3){border-top:1px solid var(--line)}
+    .buy-steps{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -550,9 +591,9 @@
           <h3>Single Family House</h3>
           <p>A premium American home on your own land: welcoming porch, chef’s kitchen, a primary suite with spa bath and covered terraces facing the mountains.</p>
           <ul class="mini">
-            <li>3 to 5 bedrooms · 250 to 500 m²</li>
-            <li>Three-car garage, landscaped grounds and outdoor fire pit</li>
-            <li>Architect-designed and fully customizable</li>
+            <li>4 to 5 bedrooms plus study · 300 to 500 m²</li>
+            <li>4 m ceilings, sunken living room and basement</li>
+            <li>Two-car garage of 8 × 8 m and full appliance package</li>
           </ul>
           <a href="#projects" class="link">See models <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
@@ -564,13 +605,100 @@
           <h3>American Style Building</h3>
           <p>Boutique luxury residences inspired by upscale American buildings: floor-to-ceiling windows, private terraces, a concierge lobby and a shared rooftop overlooking the valley.</p>
           <ul class="mini">
-            <li>1 to 3 bedroom residences and penthouses · 90 to 220 m²</li>
+            <li>3 to 4 bedroom residences plus study · 170 to 280 m²</li>
             <li>Rooftop with common areas and amenities</li>
-            <li>Imported finishes, smart home and private parking</li>
+            <li>Keyless entry, video intercom and a storage locker per unit</li>
           </ul>
           <a href="#amenities" class="link">See amenities <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="standard" id="standard">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">What is Casa Americana?</span><h2>The American standard, <em>in every detail.</em></h2></div>
+      <p class="lead">Every home and residence comes with the space, systems and finishes you would expect in a new home in the United States. As standard.</p>
+    </div>
+    <div class="std-stats reveal">
+      <div><b>4 m</b><span>Ceilings in houses and townhouses</span></div>
+      <div><b>5 × 6 m</b><span>Minimum primary bedroom</span></div>
+      <div><b>5 × 7 m</b><span>Living and dining room</span></div>
+      <div><b>8 × 8 m</b><span>Two-car garage</span></div>
+    </div>
+    <div class="std-tabs reveal" role="tablist" aria-label="Feature categories">
+      <button type="button" role="tab" aria-selected="true" data-std="space">Space &amp; layout</button>
+      <button type="button" role="tab" aria-selected="false" data-std="kitchen">Kitchen &amp; laundry</button>
+      <button type="button" role="tab" aria-selected="false" data-std="bath">Bathrooms &amp; water</button>
+      <button type="button" role="tab" aria-selected="false" data-std="build">Construction</button>
+      <button type="button" role="tab" aria-selected="false" data-std="tech">Security &amp; comfort</button>
+      <button type="button" role="tab" aria-selected="false" data-std="building">Building services</button>
+    </div>
+    <div class="std-panels reveal">
+      <ul class="std-list" data-std-panel="space">
+        <li>4 to 5 bedrooms plus study in every house</li>
+        <li>3 to 4 bedrooms plus study in every apartment</li>
+        <li>Primary bedroom of at least 5 × 6 m with walk-in closet and sitting area</li>
+        <li>Smallest bedroom 3.5 × 3.5 m</li>
+        <li>Walk-in closets in every bedroom, built outside the room</li>
+        <li>Living and dining room of 5 × 7 m</li>
+        <li>Sunken living room in houses and townhouses</li>
+        <li>4 m ceilings in houses and townhouses</li>
+        <li>3.2 m ceilings in condos</li>
+        <li>No support columns in the middle of the house</li>
+        <li>Houses with basements</li>
+        <li>Two-car garage of 8 × 8 m</li>
+        <li>Linen closets</li>
+        <li>Pocket doors</li>
+        <li>Large pantry</li>
+        <li>Wood floors or carpet in bedrooms and on the second floor</li>
+      </ul>
+      <ul class="std-list" data-std-panel="kitchen" hidden>
+        <li>Full appliance package with every house</li>
+        <li>Gas stove</li>
+        <li>Refrigerator with filtered water and ice maker</li>
+        <li>Range hood</li>
+        <li>Garbage disposal</li>
+        <li>Microwave</li>
+        <li>Dishwasher</li>
+        <li>Extra electric oven in houses and townhouses</li>
+        <li>Under-cabinet lighting</li>
+        <li>Washer and dryer</li>
+        <li>Laundry chutes in townhouses with basements</li>
+      </ul>
+      <ul class="std-list" data-std-panel="bath" hidden>
+        <li>Private primary bath with full jacuzzi tub and separate shower</li>
+        <li>Vents and fans in every bathroom</li>
+        <li>Gas water heater, in the garage for houses</li>
+        <li>Hot and cold water lines throughout</li>
+        <li>Whole-house water filtration system</li>
+        <li>Thresholds at bathrooms and the front door</li>
+      </ul>
+      <ul class="std-list" data-std-panel="build" hidden>
+        <li>Drywall interior walls</li>
+        <li>Wood or metal floor trusses above the main floor</li>
+        <li>Underground utilities</li>
+        <li>Clerestory windows for natural light</li>
+        <li>Soundproof windows in bedrooms</li>
+        <li>Balconies</li>
+      </ul>
+      <ul class="std-list" data-std-panel="tech" hidden>
+        <li>Keyless front door entry</li>
+        <li>Camera at every doorbell</li>
+        <li>A tablet in every unit to see who is at the door</li>
+        <li>Intercom to talk to visitors outside</li>
+        <li>Split A/C system</li>
+      </ul>
+      <ul class="std-list" data-std-panel="building" hidden>
+        <li>Keyless building entrance</li>
+        <li>Battery backup system for the building</li>
+        <li>Large cistern below the building</li>
+        <li>Trash chutes in condo stairwells</li>
+        <li>Parking for cars, motorcycles and bicycles</li>
+        <li>Storage locker for every unit</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -638,8 +766,8 @@
         <div class="model-body">
           <span class="model-tag">American Style Building</span>
           <h3>The Madison Residences</h3>
-          <div class="specs"><span><b>1–3</b> bed</span><span><b>24</b> residences</span><span><b>90–220</b> m²</span></div>
-          <div class="price"><div><small>From</small><strong>US$ 165,000</strong></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          <div class="specs"><span><b>3–4</b> bed + study</span><span><b>24</b> residences</span><span><b>170–280</b> m²</span></div>
+          <div class="price"><div><small>From</small><strong>US$ 311,000</strong></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </div>
       </a>
     </div>
@@ -655,9 +783,8 @@
     <div class="avail-tools reveal">
       <div class="seg" role="group" aria-label="Bedrooms">
         <button class="on" data-beds="all">All</button>
-        <button data-beds="1">1 bed</button>
-        <button data-beds="2">2 beds</button>
         <button data-beds="3">3 beds</button>
+        <button data-beds="4">4 beds</button>
       </div>
       <label class="check"><input type="checkbox" id="onlyAvail"> <span>Available only</span></label>
       <span class="avail-count" id="availCount"></span>
@@ -678,7 +805,7 @@
         <tbody id="unitRows"></tbody>
       </table>
     </div>
-    <p class="note">Sample availability for this preview. Prices and status will be updated with the official price list.</p>
+    <p class="note">Sample availability for this preview. Prices and status will be updated with the official price list. Every residence includes a study. Reserve with S/ 5,000; full payment within 30 days.</p>
   </div>
 </section>
 
@@ -830,41 +957,70 @@
 <section class="calc" id="calculator">
   <div class="wrap">
     <div class="head reveal">
-      <div><span class="eyebrow">Payment calculator</span><h2>Plan your purchase, <em>live or invest.</em></h2></div>
-      <p class="lead">Estimate your monthly payment and, if you buy to rent, your expected return.</p>
+      <div><span class="eyebrow">Rental estimator</span><h2>What could it <em>earn?</em></h2></div>
+      <p class="lead">Estimate the monthly rent and return of a Casa Americana property by location and, for the Madison, by floor.</p>
     </div>
     <div class="calc-grid reveal">
       <form class="calc-form" id="calcForm" onsubmit="return false">
-        <div class="full"><label for="cModel">Home</label>
+        <div class="full"><label for="cModel">Property</label>
           <select id="cModel">
-            <option value="395000">The Carolina · US$ 395,000</option>
-            <option value="540000">The Savannah · US$ 540,000</option>
-            <option value="165000" selected>The Madison Residences · from US$ 165,000</option>
-            <option value="custom">Other amount</option>
+            <option value="carolina">The Carolina · house · 340 m²</option>
+            <option value="savannah">The Savannah · house · 480 m²</option>
+            <option value="madison" selected>The Madison Residences · condo</option>
           </select></div>
-        <div class="full"><label for="cPrice">Price (US$)</label><input id="cPrice" type="number" min="20000" step="1000" value="165000" inputmode="numeric"></div>
-        <div class="full"><label for="cDown">Down payment <output id="cDownOut">20%</output></label><input id="cDown" type="range" min="10" max="60" step="5" value="20"></div>
-        <div><label for="cTerm">Term</label>
-          <select id="cTerm"><option value="10">10 years</option><option value="15">15 years</option><option value="20" selected>20 years</option><option value="25">25 years</option></select></div>
-        <div><label for="cRate">Interest rate (%)</label><input id="cRate" type="number" min="1" max="20" step="0.1" value="8.5" inputmode="decimal"></div>
-        <label class="check full"><input type="checkbox" id="cInvest"> <span>I'm buying to rent it out</span></label>
-        <div class="full" id="cRentRow" hidden><label for="cRent">Expected monthly rent (US$)</label><input id="cRent" type="number" min="0" step="50" value="950" inputmode="numeric"></div>
+        <div class="full"><label for="cZone">Location</label>
+          <select id="cZone">
+            <option value="center">Cajamarca · city center</option>
+            <option value="residential" selected>Cajamarca · residential area</option>
+            <option value="banos">Baños del Inca</option>
+          </select></div>
+        <div class="madison-only"><label for="cType">Residence</label>
+          <select id="cType">
+            <option value="170">3 bedrooms + study · 170 m²</option>
+            <option value="185" selected>3 bedrooms + study · 185 m²</option>
+            <option value="210">4 bedrooms + study · 210 m²</option>
+            <option value="230">4 bedrooms + study · 230 m²</option>
+          </select></div>
+        <div class="madison-only"><label for="cFloor">Floor</label>
+          <select id="cFloor">
+            <option value="1">1st floor</option>
+            <option value="2">2nd floor</option>
+            <option value="3" selected>3rd floor</option>
+            <option value="4">4th floor</option>
+            <option value="5">5th floor</option>
+            <option value="6">Penthouse</option>
+          </select></div>
       </form>
       <div class="calc-out" aria-live="polite">
-        <span class="eyebrow">Estimated monthly payment</span>
-        <strong class="calc-big" id="cMonthly">US$ 0</strong>
+        <span class="eyebrow">Estimated monthly rent</span>
+        <strong class="calc-big" id="cRent">US$ 0</strong>
+        <span class="calc-range" id="cRange"></span>
         <dl class="calc-dl">
-          <div><dt>Down payment</dt><dd id="cDownAmt">US$ 0</dd></div>
-          <div><dt>Loan amount</dt><dd id="cLoan">US$ 0</dd></div>
-          <div><dt>Total interest</dt><dd id="cInterest">US$ 0</dd></div>
-          <div class="inv" hidden><dt>Gross rental yield</dt><dd id="cYield">0%</dd></div>
-          <div class="inv" hidden><dt>Monthly cash flow</dt><dd id="cFlow">US$ 0</dd></div>
+          <div><dt>Annual rent</dt><dd id="cAnnual">US$ 0</dd></div>
+          <div><dt>Purchase price</dt><dd id="cPrice">US$ 0</dd></div>
+          <div><dt>Gross rental yield</dt><dd id="cYield">0%</dd></div>
+          <div><dt>Years to recover the price</dt><dd id="cPayback">0</dd></div>
         </dl>
-        <p class="note">Estimate only. Rates and conditions depend on each bank; rent is your own assumption.</p>
-        <button class="btn btn-primary" id="calcCta">Talk to an advisor
+        <p class="note">Reference estimate for this preview, before taxes, fees and vacancy. Actual rents depend on the market at the time.</p>
+        <button class="btn btn-primary" id="calcCta" type="button">Ask about this property
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="buy" id="buy">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">How to buy</span><h2>Simple, clear terms. <em>Full payment.</em></h2></div>
+      <p class="lead">We sell with full payment only. If you need a loan, you arrange it directly with your bank.</p>
+    </div>
+    <ol class="buy-steps">
+      <li class="reveal"><span class="buy-n">1</span><h3>Reserve</h3><p>Hold your home or residence with a <b>S/ 5,000</b> reservation. It is deducted from the price.</p></li>
+      <li class="reveal"><span class="buy-n">2</span><h3>Pay in full</h3><p>Complete the full payment within <b>30 days</b> of your reservation, in cash or through your own bank.</p></li>
+      <li class="reveal"><span class="buy-n">3</span><h3>Sign and move in</h3><p>We sign the purchase contract and hand over your keys under the agreed schedule.</p></li>
+    </ol>
+    <p class="buy-terms reveal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span>If full payment is not completed within 30 days of the reservation, the S/ 5,000 reservation is forfeited.</span></p>
   </div>
 </section>
 
@@ -895,7 +1051,7 @@
       <div><label for="s">I'm interested in</label>
         <select id="s"><option value="Single Family House">Single Family House</option><option value="Luxury residence in an American Style Building">Luxury residence in an American Style Building</option><option value="Investment / buy to rent">Investment / buy to rent</option><option value="Not sure yet">Not sure yet</option></select></div>
       <div><label for="p">Budget</label>
-        <select id="p"><option>US$ 150k – 200k</option><option>US$ 200k – 400k</option><option>US$ 400k – 600k</option><option>US$ 600k+</option></select></div>
+        <select id="p"><option>US$ 300k – 400k</option><option>US$ 400k – 500k</option><option>US$ 500k – 600k</option><option>US$ 600k+</option></select></div>
       <div class="full"><label for="m">Tell us about your project</label><textarea id="m" placeholder="Do you already own a lot? Are you looking to live or invest?"></textarea></div>
       <div class="full"><button class="btn btn-primary" type="submit">Request a quote</button></div>
       <p class="form-ok">Thank you! We'll get back to you within 24 hours.</p>
@@ -1014,9 +1170,9 @@
 
   // Ficha de cada proyecto
   const MODELS = {
-    'The Carolina': {interest:'Single Family House', features:['Double-height great room with stone fireplace','Chef’s kitchen with island and walk-in pantry','Primary suite with spa bath and walk-in closet','Covered porch and terrace facing the mountains','Two-car garage and mudroom']},
-    'The Savannah': {interest:'Single Family House', features:['Glass-walled living room open to the garden','Chef’s kitchen with scullery','Five en-suite bedrooms','Home office and media room','Three-car garage, landscaped lot and fire pit']},
-    'The Madison Residences': {interest:'Luxury residence in an American Style Building', features:['Residences and penthouses from 90 to 220 m²','Floor-to-ceiling windows and private terraces','Concierge lobby and 24/7 security','Shared rooftop: fire pit lounge, BBQ, gym and coworking','Private parking and storage']}
+    'The Carolina': {interest:'Single Family House', features:['4 m ceilings and sunken living room with fireplace','Chef’s kitchen with island and walk-in pantry','Primary suite of 5 × 6 m with sitting area, walk-in closet and jacuzzi bath','Covered porch and terrace facing the mountains','Two-car garage of 8 × 8 m and basement']},
+    'The Savannah': {interest:'Single Family House', features:['Glass-walled living room open to the garden','Chef’s kitchen with scullery','Five bedrooms with walk-in closets, plus study','Home office and media room','Two-car garage of 8 × 8 m, basement and fire pit']},
+    'The Madison Residences': {interest:'Luxury residence in an American Style Building', features:['3 to 4 bedrooms plus study, from 170 to 280 m²','3.2 m ceilings, clerestory windows and balcony','Keyless entry and a video tablet in every unit','Shared rooftop: fire pit lounge, BBQ, gym and coworking','Parking for cars, motorcycles and bicycles, plus a storage locker']}
   };
   const modal = document.getElementById('modelModal');
   const $ = id => document.getElementById(id);
@@ -1037,7 +1193,7 @@
       $('modalTag').textContent = card.querySelector('.model-tag').textContent;
       $('modalTitle').textContent = name;
       $('modalSpecs').innerHTML = card.querySelector('.specs').innerHTML;
-      $('modalPrice').innerHTML = card.querySelector('.price > div').outerHTML;
+      $('modalPrice').innerHTML = card.querySelector('.price > div').outerHTML.replace('</div>', `<span class="price-note">${L('Full payment · reserve with S/ 5,000', 'Pago al contado · reserva con S/ 5,000')}</span></div>`);
       $('modalFeatures').innerHTML = current.features.map(f => `<li>${f}</li>`).join('');
       current.name = name;
       modal.showModal();
@@ -1363,6 +1519,135 @@
   };
 
   // ---------- Idioma ----------
+  Object.assign(ES, {
+   "4 to 5 bedrooms plus study · 300 to 500 m²": "De 4 a 5 dormitorios más estudio · 300 a 500 m²",
+   "4 m ceilings, sunken living room and basement": "Techos de 4 m, sala hundida y sótano",
+   "Two-car garage of 8 × 8 m and full appliance package": "Cochera para 2 autos de 8 × 8 m y equipamiento completo de electrodomésticos",
+   "3 to 4 bedroom residences plus study · 170 to 280 m²": "Residencias de 3 a 4 dormitorios más estudio · 170 a 280 m²",
+   "Keyless entry, video intercom and a storage locker per unit": "Acceso sin llave, videointercomunicador y depósito por unidad",
+   "What is Casa Americana?": "¿Qué es Casa Americana?",
+   "The American standard,": "El estándar americano,",
+   "in every detail.": "en cada detalle.",
+   "Every home and residence comes with the space, systems and finishes you would expect in a new home in the United States. As standard.": "Cada casa y residencia incluye los espacios, sistemas y acabados que esperarías en una vivienda nueva en Estados Unidos. De serie.",
+   "Ceilings in houses and townhouses": "Altura de techos en casas y townhouses",
+   "Minimum primary bedroom": "Dormitorio principal mínimo",
+   "Living and dining room": "Sala-comedor",
+   "Two-car garage": "Cochera para 2 autos",
+   "Space & layout": "Espacios y distribución",
+   "Kitchen & laundry": "Cocina y lavandería",
+   "Bathrooms & water": "Baños y agua",
+   "Security & comfort": "Seguridad y confort",
+   "Building services": "Servicios del edificio",
+   "Feature categories": "Categorías de características",
+   "4 to 5 bedrooms plus study in every house": "De 4 a 5 dormitorios más estudio en cada casa",
+   "3 to 4 bedrooms plus study in every apartment": "De 3 a 4 dormitorios más estudio en cada departamento",
+   "Primary bedroom of at least 5 × 6 m with walk-in closet and sitting area": "Dormitorio principal de al menos 5 × 6 m con walk-in closet y zona de estar",
+   "Smallest bedroom 3.5 × 3.5 m": "Dormitorio más pequeño de 3.5 × 3.5 m",
+   "Walk-in closets in every bedroom, built outside the room": "Walk-in closet en cada dormitorio, fuera del área del cuarto",
+   "Living and dining room of 5 × 7 m": "Sala y comedor de 5 × 7 m",
+   "Sunken living room in houses and townhouses": "Sala hundida en casas y townhouses",
+   "4 m ceilings in houses and townhouses": "Techos de 4 m en casas y townhouses",
+   "3.2 m ceilings in condos": "Techos de 3.2 m en condominios",
+   "No support columns in the middle of the house": "Sin columnas en el medio de la casa",
+   "Houses with basements": "Casas con sótano",
+   "Two-car garage of 8 × 8 m": "Cochera para 2 autos de 8 × 8 m",
+   "Linen closets": "Closets de blancos",
+   "Pocket doors": "Puertas corredizas empotradas",
+   "Large pantry": "Despensa amplia",
+   "Wood floors or carpet in bedrooms and on the second floor": "Pisos de madera o alfombra en dormitorios y segundo piso",
+   "Full appliance package with every house": "Equipamiento completo de electrodomésticos en cada casa",
+   "Gas stove": "Cocina a gas",
+   "Refrigerator with filtered water and ice maker": "Refrigeradora con agua filtrada y máquina de hielo",
+   "Range hood": "Campana extractora",
+   "Garbage disposal": "Triturador de desperdicios",
+   "Microwave": "Microondas",
+   "Dishwasher": "Lavavajillas",
+   "Extra electric oven in houses and townhouses": "Horno eléctrico adicional en casas y townhouses",
+   "Under-cabinet lighting": "Iluminación bajo gabinetes",
+   "Washer and dryer": "Lavadora y secadora",
+   "Laundry chutes in townhouses with basements": "Ductos de ropa en townhouses con sótano",
+   "Private primary bath with full jacuzzi tub and separate shower": "Baño principal privado con tina jacuzzi y ducha separada",
+   "Vents and fans in every bathroom": "Ventilación y extractor en todos los baños",
+   "Gas water heater, in the garage for houses": "Terma a gas, en la cochera en el caso de las casas",
+   "Hot and cold water lines throughout": "Instalaciones de agua fría y caliente en toda la vivienda",
+   "Whole-house water filtration system": "Sistema de filtración de agua para toda la vivienda",
+   "Thresholds at bathrooms and the front door": "Umbrales en baños y puerta principal",
+   "Drywall interior walls": "Muros interiores de drywall",
+   "Wood or metal floor trusses above the main floor": "Entrepisos con viguetas de madera o metal sobre el primer piso",
+   "Underground utilities": "Instalaciones de servicios subterráneas",
+   "Clerestory windows for natural light": "Ventanas altas (clerestory) para luz natural",
+   "Soundproof windows in bedrooms": "Ventanas acústicas en dormitorios",
+   "Balconies": "Balcones",
+   "Keyless front door entry": "Puerta principal sin llave",
+   "Camera at every doorbell": "Cámara en cada timbre",
+   "A tablet in every unit to see who is at the door": "Una tablet en cada unidad para ver quién está en la puerta",
+   "Intercom to talk to visitors outside": "Intercomunicador para hablar con las visitas",
+   "Split A/C system": "Aire acondicionado tipo split",
+   "Keyless building entrance": "Ingreso al edificio sin llave",
+   "Battery backup system for the building": "Sistema de baterías de respaldo para el edificio",
+   "Large cistern below the building": "Gran cisterna bajo el edificio",
+   "Trash chutes in condo stairwells": "Ductos de basura en las escaleras de los condominios",
+   "Parking for cars, motorcycles and bicycles": "Estacionamiento para autos, motos y bicicletas",
+   "Storage locker for every unit": "Depósito para cada unidad",
+   "bed + study": "dorm. + estudio",
+   "3 beds": "3 dorm.",
+   "4 beds": "4 dorm.",
+   "Sample availability for this preview. Prices and status will be updated with the official price list. Every residence includes a study. Reserve with S/ 5,000; full payment within 30 days.": "Disponibilidad de ejemplo para esta vista previa. Los precios y estados se actualizarán con la lista oficial. Todas las residencias incluyen estudio. Reserva con S/ 5,000; pago total dentro de 30 días.",
+   "Rental estimator": "Estimador de alquiler",
+   "What could it": "¿Cuánto podría",
+   "earn?": "rentar?",
+   "Estimate the monthly rent and return of a Casa Americana property by location and, for the Madison, by floor.": "Estima el alquiler mensual y la rentabilidad de un inmueble Casa Americana según la ubicación y, en el Madison, según el piso.",
+   "Property": "Inmueble",
+   "The Carolina · house · 340 m²": "The Carolina · casa · 340 m²",
+   "The Savannah · house · 480 m²": "The Savannah · casa · 480 m²",
+   "The Madison Residences · condo": "The Madison Residences · condominio",
+   "Location": "Ubicación",
+   "Cajamarca · city center": "Cajamarca · centro",
+   "Cajamarca · residential area": "Cajamarca · zona residencial",
+   "Residence": "Residencia",
+   "3 bedrooms + study · 170 m²": "3 dormitorios + estudio · 170 m²",
+   "3 bedrooms + study · 185 m²": "3 dormitorios + estudio · 185 m²",
+   "4 bedrooms + study · 210 m²": "4 dormitorios + estudio · 210 m²",
+   "4 bedrooms + study · 230 m²": "4 dormitorios + estudio · 230 m²",
+   "1st floor": "Piso 1",
+   "2nd floor": "Piso 2",
+   "3rd floor": "Piso 3",
+   "4th floor": "Piso 4",
+   "5th floor": "Piso 5",
+   "Estimated monthly rent": "Alquiler mensual estimado",
+   "Annual rent": "Alquiler anual",
+   "Purchase price": "Precio de compra",
+   "Years to recover the price": "Años para recuperar el precio",
+   "Reference estimate for this preview, before taxes, fees and vacancy. Actual rents depend on the market at the time.": "Estimación referencial para esta vista previa, antes de impuestos, comisiones y periodos vacíos. El alquiler real depende del mercado en su momento.",
+   "Ask about this property": "Consultar por este inmueble",
+   "How to buy": "Cómo comprar",
+   "Simple, clear terms.": "Condiciones simples y claras.",
+   "Full payment.": "Pago al contado.",
+   "We sell with full payment only. If you need a loan, you arrange it directly with your bank.": "Solo vendemos con pago total. Si necesitas un préstamo, lo gestionas directamente con tu banco.",
+   "Reserve": "Reserva",
+   "Hold your home or residence with a": "Separa tu casa o residencia con una reserva de",
+   "reservation. It is deducted from the price.": ". Se descuenta del precio.",
+   "Pay in full": "Paga el total",
+   "Complete the full payment within": "Completa el pago total dentro de los",
+   "30 days": "30 días",
+   "of your reservation, in cash or through your own bank.": "siguientes a tu reserva, al contado o a través de tu propio banco.",
+   "Sign and move in": "Firma y múdate",
+   "We sign the purchase contract and hand over your keys under the agreed schedule.": "Firmamos el contrato de compraventa y te entregamos las llaves según el cronograma acordado.",
+   "If full payment is not completed within 30 days of the reservation, the S/ 5,000 reservation is forfeited.": "Si el pago total no se completa dentro de los 30 días siguientes a la reserva, se pierde la reserva de S/ 5,000.",
+   "3 to 4 bedrooms plus study, from 170 to 280 m²": "De 3 a 4 dormitorios más estudio, de 170 a 280 m²",
+   "3.2 m ceilings, clerestory windows and balcony": "Techos de 3.2 m, ventanas altas y balcón",
+   "Keyless entry and a video tablet in every unit": "Acceso sin llave y tablet con video en cada unidad",
+   "Parking for cars, motorcycles and bicycles, plus a storage locker": "Estacionamiento para autos, motos y bicicletas, más depósito",
+   "Typical 3-bedroom residence + study": "Residencia típica de 3 dormitorios + estudio",
+   "Balcony": "Balcón",
+   "Language / Idioma": "Idioma / Language",
+   "4 m ceilings and sunken living room with fireplace": "Techos de 4 m y sala hundida con chimenea",
+   "Primary suite of 5 × 6 m with sitting area, walk-in closet and jacuzzi bath": "Suite principal de 5 × 6 m con zona de estar, walk-in closet y baño con jacuzzi",
+   "Two-car garage of 8 × 8 m and basement": "Cochera para 2 autos de 8 × 8 m y sótano",
+   "Five bedrooms with walk-in closets, plus study": "Cinco dormitorios con walk-in closet, más estudio",
+   "Two-car garage of 8 × 8 m, basement and fire pit": "Cochera para 2 autos de 8 × 8 m, sótano y fogatero",
+   "US$ 300k – 400k": "US$ 300k – 400k"
+  });
   const ES_INV = Object.fromEntries(Object.entries(ES).map(([en, es]) => [es, en]));
   let lang = 'en';
   try { lang = localStorage.getItem('ca-lang') === 'es' ? 'es' : 'en'; } catch (e) {}
@@ -1425,7 +1710,7 @@
       {name: 'Ground floor', area: 260, rooms: [['Garage',0,0,7,6],['Media room',0,6,7,7],['Kitchen',7,0,6,5],['Scullery',13,0,3,5],['Office',16,0,4,5],['Living & dining',7,5,13,8]]},
       {name: 'Upper floor', area: 220, rooms: [['Primary suite',0,0,8,7],['Primary bath',0,7,5,6],['Closet',5,7,3,6],['Bedroom 2',8,0,6,6],['Bedroom 3',14,0,6,6],['Bedroom 4',8,6,6,7],['Bedroom 5',14,6,6,7]]}],
     'The Madison Residences': [
-      {name: 'Typical 2-bedroom residence', area: 120, rooms: [['Living & dining',0,0,11,7],['Kitchen',11,0,5,4],['Laundry',11,4,5,3],['Terrace',16,0,4,7],['Primary bedroom',0,7,8,6],['Bath',8,7,3,6],['Bedroom 2',11,7,9,6]]}]
+      {name: 'Typical 3-bedroom residence + study', area: 185, rooms: [['Living & dining',0,0,9,7],['Kitchen',9,0,5,4],['Laundry',9,4,2,3],['Study',11,4,3,3],['Balcony',14,0,6,3],['Bedroom 2',14,3,6,4],['Primary suite',0,7,8,6],['Primary bath',8,7,3,6],['Walk-in closet',11,7,3,3],['Bath',11,10,3,3],['Bedroom 3',14,7,6,6]]}]
   };
   let floorIdx = 0;
   // Parte el nombre del ambiente en dos líneas si no entra en el ancho
@@ -1462,8 +1747,8 @@
   }));
 
   // ---------- Disponibilidad del Madison ----------
-  const TYPES = [['A',1,90,'Valley'],['B',2,120,'Mountains'],['C',2,130,'Courtyard'],['D',3,165,'Corner, two views']];
-  const PH = [['PH1',3,220,'Panoramic'],['PH2',3,205,'Panoramic'],['PH3',2,180,'Mountains'],['PH4',2,175,'Valley']];
+  const TYPES = [['A',3,170,'Valley'],['B',3,185,'Mountains'],['C',4,210,'Courtyard'],['D',4,230,'Corner, two views']];
+  const PH = [['PH1',4,280,'Panoramic'],['PH2',4,260,'Panoramic'],['PH3',4,250,'Mountains'],['PH4',3,240,'Valley']];
   const SOLD = ['1B','1D','2A','3C','5D','PH2'], RESERVED = ['2D','4B','PH1'];
   const UNITS = [];
   for (let fl = 1; fl <= 6; fl++) (fl < 6 ? TYPES.map(([l, b, m, v]) => [fl + l, b, m, v]) : PH).forEach(([unit, beds, m2, view]) => {
@@ -1523,43 +1808,54 @@
     `I'd like a Single Family House with ${pick.siding} siding, ${pick.trim} trim, a ${pick.roof} roof and a ${pick.door} front door${$('stoneBase').checked ? ', with a stone base' : ''}.`,
     `Quisiera una Single Family House con revestimiento ${pick.siding}, molduras ${pick.trim}, techo ${pick.roof} y puerta ${pick.door}${$('stoneBase').checked ? ', con base de piedra' : ''}.`)));
 
-  // ---------- Calculadora ----------
-  const c = id => $(id);
-  const updateCalc = () => {
-    const price = Math.max(+c('cPrice').value || 0, 0), down = +c('cDown').value / 100;
-    const n = +c('cTerm').value * 12, r = (+c('cRate').value || 0) / 100 / 12;
-    const loan = price * (1 - down);
-    const pay = r ? loan * r / (1 - Math.pow(1 + r, -n)) : loan / n;
-    c('cDownOut').textContent = Math.round(down * 100) + '%';
-    c('cMonthly').innerHTML = `${fmt(pay)}<small>${L('/ month', '/ mes')}</small>`;
-    c('cDownAmt').textContent = fmt(price * down);
-    c('cLoan').textContent = fmt(loan);
-    c('cInterest').textContent = fmt(pay * n - loan);
-    const inv = c('cInvest').checked;
-    c('cRentRow').hidden = !inv;
-    document.querySelectorAll('.calc-dl .inv').forEach(d => d.hidden = !inv);
-    if (inv) {
-      const rent = +c('cRent').value || 0, flow = rent - pay;
-      c('cYield').textContent = price ? (rent * 12 / price * 100).toFixed(1) + '%' : '—';
-      c('cFlow').textContent = (flow < 0 ? '− ' : '+ ') + fmt(Math.abs(flow));
-      c('cFlow').className = flow < 0 ? 'neg' : 'pos';
-    }
-  };
-  c('cModel').addEventListener('change', () => {
-    if (c('cModel').value !== 'custom') {
-      c('cPrice').value = c('cModel').value;
-      c('cRent').value = Math.round(c('cModel').value * 0.0058 / 50) * 50;
-    }
-    updateCalc();
+  // ---------- Estándar: pestañas por categoría ----------
+  document.querySelectorAll('[data-std]').forEach(b => {
+    const panel = document.querySelector(`[data-std-panel="${b.dataset.std}"]`);
+    b.insertAdjacentHTML('beforeend', `<span class="n">${panel.children.length}</span>`);
+    b.addEventListener('click', () => {
+      document.querySelectorAll('[data-std]').forEach(x => x.setAttribute('aria-selected', x === b));
+      document.querySelectorAll('[data-std-panel]').forEach(p => { p.hidden = p !== panel; });
+      panel.classList.remove('fade'); void panel.offsetWidth; panel.classList.add('fade');
+    });
   });
-  c('cPrice').addEventListener('input', () => { c('cModel').value = [...c('cModel').options].some(o => o.value === c('cPrice').value) ? c('cPrice').value : 'custom'; updateCalc(); });
-  ['cDown', 'cTerm', 'cRate', 'cInvest', 'cRent'].forEach(id => c(id).addEventListener('input', updateCalc));
-  c('cInvest').addEventListener('change', updateCalc);
-  c('calcCta').addEventListener('click', () => {
-    const home = c('cModel').selectedOptions[0].text;
-    goContact(c('cModel').value === '165000' ? 'Luxury residence in an American Style Building' : c('cModel').value === 'custom' ? '' : 'Single Family House', L(
-      `I'd like financing advice. Home: ${home}. Price ${fmt(c('cPrice').value)}, ${c('cDown').value}% down, ${c('cTerm').value} years at ${c('cRate').value}%.`,
-      `Quisiera asesoría de financiamiento. Vivienda: ${home}. Precio ${fmt(c('cPrice').value)}, ${c('cDown').value}% de inicial, ${c('cTerm').value} años al ${c('cRate').value}%.`));
+
+  // ---------- Estimador de renta ----------
+  // Valores de referencia para la vista previa (US$ por m² al mes); reemplazar con datos de mercado
+  const ZONE_RATE = {center: 6.5, residential: 6.0, banos: 5.4};
+  const HOUSES = {carolina: {m2: 340, price: 395000}, savannah: {m2: 480, price: 540000}};
+  const HOUSE_FACTOR = 0.7, FLOOR_STEP = 0.015, PENTHOUSE = 1.12, SPREAD = 0.08;
+  const madisonPrice = (m2, fl) => Math.round(m2 * (fl < 6 ? 1830 : 2100) * (1 + 0.02 * (fl - 1)) / 1000) * 1000;
+  let est = {};
+  const updateCalc = () => {
+    const model = $('cModel').value, rate = ZONE_RATE[$('cZone').value];
+    const isCondo = model === 'madison';
+    document.querySelectorAll('.madison-only').forEach(d => d.hidden = !isCondo);
+    let m2, price, rent;
+    if (isCondo) {
+      const fl = +$('cFloor').value;
+      m2 = +$('cType').value + (fl === 6 ? 50 : 0);
+      price = madisonPrice(m2, fl);
+      rent = m2 * rate * (fl === 6 ? PENTHOUSE : 1 + FLOOR_STEP * (fl - 1));
+    } else {
+      ({m2, price} = HOUSES[model]);
+      rent = m2 * rate * HOUSE_FACTOR;
+    }
+    rent = Math.round(rent / 10) * 10;
+    est = {m2, price, rent};
+    $('cRent').innerHTML = `${fmt(rent)}<small>${L('/ month', '/ mes')}</small>`;
+    $('cRange').textContent = L('Likely range ', 'Rango probable ') + fmt(rent * (1 - SPREAD)) + ' – ' + fmt(rent * (1 + SPREAD));
+    $('cAnnual').textContent = fmt(rent * 12);
+    $('cPrice').textContent = fmt(price);
+    $('cYield').textContent = (rent * 12 / price * 100).toFixed(1) + '%';
+    $('cPayback').textContent = L(`${Math.round(price / (rent * 12))} years`, `${Math.round(price / (rent * 12))} años`);
+  };
+  ['cModel', 'cZone', 'cType', 'cFloor'].forEach(id => $(id).addEventListener('change', updateCalc));
+  $('calcCta').addEventListener('click', () => {
+    const isCondo = $('cModel').value === 'madison';
+    const what = isCondo ? `The Madison Residences (${$('cType').selectedOptions[0].text}, ${$('cFloor').selectedOptions[0].text})` : $('cModel').selectedOptions[0].text.split(' · ')[0];
+    goContact(isCondo ? 'Luxury residence in an American Style Building' : 'Single Family House', L(
+      `I'd like to buy to rent out: ${what}, ${$('cZone').selectedOptions[0].text}. Estimated rent ${fmt(est.rent)} per month.`,
+      `Quiero comprar para alquilar: ${what}, ${$('cZone').selectedOptions[0].text}. Renta estimada ${fmt(est.rent)} al mes.`));
   });
 
   renderUnits(); updateFacade(); updateCalc();
