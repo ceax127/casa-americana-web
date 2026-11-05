@@ -61,7 +61,7 @@
   .burger{display:none;background:none;border:0;color:inherit;cursor:pointer}
 
   /* HERO */
-  .hero{position:relative;min-height:min(100svh,820px);display:flex;align-items:flex-end;color:#fff;padding:116px 0 clamp(28px,5vh,56px);background:var(--navy)}
+  .hero{position:relative;overflow:hidden;min-height:min(100svh,820px);display:flex;align-items:flex-end;color:#fff;padding:116px 0 clamp(28px,5vh,56px);background:var(--navy)}
   .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,28,38,.75) 0%,rgba(20,28,38,.2) 65%),linear-gradient(180deg,rgba(20,28,38,.35) 0%,transparent 35%,rgba(20,28,38,.7) 100%)}
   .hero .wrap{position:relative;z-index:2;width:100%}
@@ -141,7 +141,7 @@
   .specs b{color:var(--navy);font-weight:700}
   .price{display:flex;justify-content:space-between;align-items:center}
   .price small{display:block;font-size:.72rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
-  .price strong{font-family:var(--serif);font-size:1.6rem;font-weight:600;color:var(--navy)}
+  .price strong{font-variant-numeric:lining-nums;font-family:var(--serif);font-size:1.6rem;font-weight:600;color:var(--navy)}
   .arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:.25s}
   .model:hover .arrow{background:var(--brass);border-color:var(--brass);color:#fff}
 
@@ -249,7 +249,7 @@
   :focus-visible{outline:2px solid var(--brass);outline-offset:3px}
   .hero img{animation:settle 14s ease-out both}
   @keyframes settle{from{transform:scale(1.08)}to{transform:scale(1)}}
-  .hero-meta b{font-variant-numeric:tabular-nums}
+  .hero-meta b{font-variant-numeric:lining-nums tabular-nums}
 
   .line-card{transition:transform .35s ease,box-shadow .35s ease}
   .line-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -32px rgba(30,42,56,.4)}
@@ -315,6 +315,119 @@
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none!important;transition:none!important}
   }
+
+  /* IDIOMA */
+  .lang{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid currentColor;color:inherit;border-radius:999px;padding:.45rem .8rem;font:600 .75rem/1 var(--sans);letter-spacing:.12em;cursor:pointer;opacity:.85;transition:opacity .2s ease,background .2s ease}
+  .lang:hover{opacity:1;background:rgba(176,141,87,.15)}
+  .nav-actions{display:flex;align-items:center;gap:14px}
+
+  /* POR QUÉ CAJAMARCA */
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .why-card{position:relative;background:#fff;border:1px solid var(--line);border-top:3px solid var(--brass);border-radius:var(--radius);padding:28px 24px;transition:transform .3s ease,box-shadow .3s ease}
+  .why-card:hover{transform:translateY(-4px);box-shadow:0 24px 48px -28px rgba(30,42,56,.35)}
+  .why-card b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(2rem,1.6rem + 1.2vw,2.7rem);color:var(--navy);line-height:1;font-variant-numeric:lining-nums tabular-nums}
+  .why-label{display:block;margin:.7rem 0 .6rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--brass)}
+  .why-card p{font-size:.92rem;color:var(--muted)}
+  .why-src{display:inline-block;margin-top:.8rem;font-size:.75rem;color:var(--muted);border-bottom:1px solid var(--line)}
+  .why-src:hover{color:var(--navy);border-color:var(--brass)}
+
+  /* PLANOS EN LA FICHA */
+  .tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  .tabs button{background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:10px 12px;font:600 .78rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);cursor:pointer}
+  .tabs button[aria-selected="true"]{color:var(--navy);border-bottom-color:var(--brass)}
+  .tabs button:hover{color:var(--navy)}
+  .plan-floors{display:flex;gap:8px;margin-bottom:12px}
+  .plan-svg{width:100%;height:auto;display:block;background:var(--paper)}
+  .plan-svg .room{cursor:pointer}
+  .plan-svg .room rect{fill:#fff;stroke:var(--navy);stroke-width:2;transition:fill .2s ease}
+  .plan-svg .room:hover rect,.plan-svg .room.on rect{fill:#efe4d0}
+  .plan-svg text{fill:var(--navy);font-family:var(--sans);pointer-events:none}
+  .plan-info{margin-top:10px;font-weight:600;color:var(--navy);min-height:1.6em}
+  .plan-note,.note{font-size:.8rem;color:var(--muted);margin-top:10px}
+
+  /* BOTONES SEGMENTADOS Y CHECKBOX */
+  .seg{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px}
+  .seg button{background:none;border:0;border-radius:999px;padding:.55rem 1rem;font:600 .8rem/1 var(--sans);color:var(--muted);cursor:pointer;transition:background .2s ease,color .2s ease}
+  .seg button:hover{color:var(--navy)}
+  .seg button.on{background:var(--navy);color:#fff}
+  .check{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-size:.92rem;color:var(--ink);text-transform:none;letter-spacing:0;font-weight:500;margin:0}
+  .check input{width:18px;height:18px;accent-color:var(--brass);padding:0}
+
+  /* DISPONIBILIDAD */
+  .avail{background:var(--cream)}
+  .avail-tools{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-bottom:20px}
+  .avail-count{margin-left:auto;font-size:.85rem;color:var(--muted)}
+  .table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+  .units{width:100%;border-collapse:collapse;min-width:640px;font-size:.92rem;font-variant-numeric:tabular-nums}
+  .units th{text-align:left;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:14px 18px;border-bottom:1px solid var(--line);white-space:nowrap}
+  .units th button{background:none;border:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:6px}
+  .units th button:hover,.units th button.sorted{color:var(--navy)}
+  .units th button::after{content:"↕";opacity:.35;font-size:.9em}
+  .units th button.sorted.asc::after{content:"↑";opacity:1}
+  .units th button.sorted.desc::after{content:"↓";opacity:1}
+  .units td{padding:14px 18px;border-bottom:1px solid var(--line);white-space:nowrap}
+  .units tbody tr{cursor:pointer;transition:background .2s ease}
+  .units tbody tr:hover{background:var(--paper)}
+  .units tbody tr:last-child td{border-bottom:0}
+  .units td:first-child{font-weight:700;color:var(--navy)}
+  .units .price-cell{font-variant-numeric:lining-nums tabular-nums;font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--navy)}
+  .chip{display:inline-block;padding:4px 10px;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.06em}
+  .chip.available{background:#e6ece2;color:#4b5e44}
+  .chip.reserved{background:#f3e8d6;color:#8a6a35}
+  .chip.sold{background:#ececec;color:#7a7a7a}
+  .units tr.is-sold{cursor:default;color:#9a9a9a}
+  .units tr.is-sold td:first-child,.units tr.is-sold .price-cell{color:#9a9a9a}
+
+  /* ESTUDIO DE FACHADA */
+  .studio-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(28px,4vw,56px);align-items:center}
+  .studio-stage{margin:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#dfe6ea}
+  .studio-stage svg{display:block;width:100%;height:auto}
+  .studio-stage figcaption{background:#fff;padding:14px 18px;font-size:.88rem;color:var(--muted);border-top:1px solid var(--line)}
+  #facade{--siding:#EFE9DD;--trim:#FAFAF7;--roof:#2C2F33;--door:#1E2A38}
+  #facade .f-siding{fill:var(--siding);transition:fill .4s ease}
+  #facade .f-trim{fill:var(--trim);transition:fill .4s ease}
+  #facade .f-trim-line,#facade .f-trim-stroke{stroke:var(--trim);transition:stroke .4s ease}
+  #facade .f-roof{fill:var(--roof);transition:fill .4s ease}
+  #facade .f-door{fill:var(--door);transition:fill .4s ease}
+  #facade.no-stone .f-stone,#facade.no-stone .f-stone-base{display:none}
+  .studio-controls{display:grid;gap:22px}
+  .opt h4{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:10px}
+  .opt h4 span{color:var(--navy);letter-spacing:.04em;text-transform:none;font-weight:600;margin-left:6px}
+  .swatches{display:flex;gap:10px;flex-wrap:wrap}
+  .swatches button{width:40px;height:40px;border-radius:50%;background:var(--c);border:1px solid rgba(0,0,0,.15);cursor:pointer;box-shadow:0 0 0 0 var(--brass);transition:transform .2s ease,box-shadow .2s ease}
+  .swatches button:hover{transform:scale(1.08)}
+  .swatches button.on{box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--brass)}
+  .studio-controls .btn{justify-self:start}
+
+  /* CALCULADORA */
+  .calc{background:var(--cream)}
+  .calc-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .calc-form{background:#fff;border:0;border-radius:0;padding:clamp(24px,3vw,40px)}
+  .calc-form output{float:right;color:var(--navy);font-weight:700;letter-spacing:.04em}
+  input[type=range]{padding:0;border:0;background:none;accent-color:var(--brass);height:28px}
+  .calc-out{background:var(--navy);color:#fff;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:14px}
+  .calc-out .eyebrow{color:var(--brass-2)}
+  .calc-big{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,2rem + 2vw,3.8rem);line-height:1;font-variant-numeric:lining-nums tabular-nums}
+  .calc-big small{font-family:var(--sans);font-size:.9rem;opacity:.7;margin-left:6px}
+  .calc-dl{display:grid;gap:0;margin-top:6px}
+  .calc-dl > div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .calc-dl dt{color:rgba(255,255,255,.7);font-size:.9rem}
+  .calc-dl dd{font-weight:700;font-variant-numeric:tabular-nums}
+  .calc-dl dd.neg{color:#f0a89c}
+  .calc-dl dd.pos{color:#b9d3a8}
+  .calc-out .note{color:rgba(255,255,255,.6)}
+  .calc-out .btn{align-self:flex-start}
+
+  @media (max-width:1000px){
+    .why-grid{grid-template-columns:1fr 1fr}
+    .studio-grid,.calc-grid{grid-template-columns:1fr}
+    .nav-actions .btn{display:none}
+  }
+  @media (max-width:600px){
+    .why-grid{grid-template-columns:1fr}
+    .avail-count{margin-left:0;width:100%}
+    .seg button{padding:.5rem .7rem}
+  }
 </style>
 </head>
 <body>
@@ -343,10 +456,13 @@
       <li><a href="#structure">Structure</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#contact" class="btn btn-primary">Book a visit</a>
-    <button class="burger" aria-label="Open menu" onclick="document.getElementById('nav').classList.toggle('open')">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
-    </button>
+    <div class="nav-actions">
+      <button class="lang" id="langBtn" type="button" aria-label="Cambiar a español">ES</button>
+      <a href="#contact" class="btn btn-primary">Book a visit</a>
+      <button class="burger" aria-label="Open menu" onclick="document.getElementById('nav').classList.toggle('open')">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -428,6 +544,39 @@
   </div>
 </section>
 
+<section class="why" id="cajamarca">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">Why Cajamarca</span><h2>A mountain city <em>on the rise.</em></h2></div>
+      <p class="lead">Andean quality of life in one of Peru's most dynamic regional economies, driven by mining investment and a growing professional community.</p>
+    </div>
+    <div class="why-grid">
+      <article class="why-card reveal">
+        <b>2,750 m</b>
+        <span class="why-label">Above sea level</span>
+        <p>A green Andean valley with sunny days and cool nights all year round.</p>
+      </article>
+      <article class="why-card reveal">
+        <b>US$ 16.5 B</b>
+        <span class="why-label">Mining project pipeline</span>
+        <p>Large regional projects keep demand for quality housing high.</p>
+        <a class="why-src" href="https://energiminas.com/tag/cajamarca" target="_blank" rel="noopener">Source: Energiminas</a>
+      </article>
+      <article class="why-card reveal">
+        <b>+50%</b>
+        <span class="why-label">Rent increase linked to mining</span>
+        <p>A strong signal for buy-to-rent investors.</p>
+        <a class="why-src" href="https://gestion.pe/noticias/CAJAMARCA/" target="_blank" rel="noopener">Source: Gestión, 2026</a>
+      </article>
+      <article class="why-card reveal">
+        <b>~1 h 20</b>
+        <span class="why-label">Flight to Lima</span>
+        <p>Daily flights from Cajamarca's airport, minutes from the city center.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section id="projects">
   <div class="wrap">
     <div class="head reveal">
@@ -462,6 +611,129 @@
           <div class="price"><div><small>From</small><strong>US$ 165,000</strong></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </div>
       </a>
+    </div>
+  </div>
+</section>
+
+<section class="avail" id="availability">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">The Madison Residences</span><h2>Choose <em>your residence.</em></h2></div>
+      <p class="lead">Filter by bedrooms and status, sort by price or size, and tap a residence to ask about it.</p>
+    </div>
+    <div class="avail-tools reveal">
+      <div class="seg" role="group" aria-label="Bedrooms">
+        <button class="on" data-beds="all">All</button>
+        <button data-beds="1">1 bed</button>
+        <button data-beds="2">2 beds</button>
+        <button data-beds="3">3 beds</button>
+      </div>
+      <label class="check"><input type="checkbox" id="onlyAvail"> <span>Available only</span></label>
+      <span class="avail-count" id="availCount"></span>
+    </div>
+    <div class="table-wrap reveal">
+      <table class="units">
+        <thead>
+          <tr>
+            <th scope="col"><button data-sort="unit">Residence</button></th>
+            <th scope="col"><button data-sort="floor">Floor</button></th>
+            <th scope="col"><button data-sort="beds">Bedrooms</button></th>
+            <th scope="col"><button data-sort="m2">Size</button></th>
+            <th scope="col">View</th>
+            <th scope="col"><button data-sort="price">Price</button></th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody id="unitRows"></tbody>
+      </table>
+    </div>
+    <p class="note">Sample availability for this preview. Prices and status will be updated with the official price list.</p>
+  </div>
+</section>
+
+<section class="studio" id="studio">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">Design studio</span><h2>Make the facade <em>yours.</em></h2></div>
+      <p class="lead">Try the classic American palette on a Single Family House: siding, trim, roof and front door.</p>
+    </div>
+    <div class="studio-grid">
+      <figure class="studio-stage reveal">
+        <svg id="facade" viewBox="0 0 600 380" role="img" aria-label="Facade preview">
+          <rect width="600" height="380" fill="#dfe6ea"/>
+          <polygon points="0,250 90,170 170,215 260,140 360,210 450,150 600,240 600,380 0,380" fill="#b9c6b3"/>
+          <polygon points="0,290 120,230 230,270 330,225 470,265 600,235 600,380 0,380" fill="#9fb092"/>
+          <rect x="0" y="336" width="600" height="44" fill="#7f9a68"/>
+          <rect class="f-stone" x="402" y="70" width="30" height="80" fill="#8c857b"/>
+          <polygon class="f-roof" points="96,178 300,58 504,178"/>
+          <rect class="f-siding" x="120" y="172" width="360" height="166"/>
+          <polygon class="f-siding" points="128,176 300,76 472,176"/>
+          <g class="f-lines" stroke="rgba(0,0,0,.09)" stroke-width="1">
+            <line x1="120" y1="186" x2="480" y2="186"/><line x1="120" y1="200" x2="480" y2="200"/><line x1="120" y1="214" x2="480" y2="214"/><line x1="120" y1="228" x2="480" y2="228"/><line x1="120" y1="242" x2="480" y2="242"/><line x1="120" y1="256" x2="480" y2="256"/><line x1="120" y1="270" x2="480" y2="270"/><line x1="120" y1="284" x2="480" y2="284"/><line x1="120" y1="298" x2="480" y2="298"/><line x1="120" y1="312" x2="480" y2="312"/>
+            <line x1="215" y1="158" x2="385" y2="158"/><line x1="240" y1="144" x2="360" y2="144"/><line x1="190" y1="172" x2="410" y2="172"/>
+          </g>
+          <polyline class="f-trim-line" points="96,178 300,58 504,178" fill="none" stroke-width="7" stroke-linejoin="round"/>
+          <rect class="f-stone-base" x="120" y="314" width="360" height="24" fill="#8c857b"/>
+          <g class="f-stone-base" stroke="rgba(0,0,0,.18)" stroke-width="1"><line x1="120" y1="326" x2="480" y2="326"/><line x1="160" y1="314" x2="160" y2="326"/><line x1="230" y1="326" x2="230" y2="338"/><line x1="300" y1="314" x2="300" y2="326"/><line x1="370" y1="326" x2="370" y2="338"/><line x1="440" y1="314" x2="440" y2="326"/></g>
+          <rect class="f-trim" x="268" y="104" width="64" height="48" rx="2"/>
+          <rect x="274" y="110" width="52" height="36" fill="#a9bccb"/>
+          <line class="f-trim-stroke" x1="300" y1="110" x2="300" y2="146" stroke-width="3"/>
+          <rect class="f-trim" x="150" y="234" width="70" height="78"/>
+          <rect x="157" y="241" width="56" height="64" fill="#a9bccb"/>
+          <line class="f-trim-stroke" x1="185" y1="241" x2="185" y2="305" stroke-width="3"/><line class="f-trim-stroke" x1="157" y1="273" x2="213" y2="273" stroke-width="3"/>
+          <rect class="f-trim" x="380" y="234" width="70" height="78"/>
+          <rect x="387" y="241" width="56" height="64" fill="#a9bccb"/>
+          <line class="f-trim-stroke" x1="415" y1="241" x2="415" y2="305" stroke-width="3"/><line class="f-trim-stroke" x1="387" y1="273" x2="443" y2="273" stroke-width="3"/>
+          <rect class="f-trim" x="270" y="246" width="60" height="92"/>
+          <rect class="f-door" x="277" y="253" width="46" height="85"/>
+          <rect x="285" y="262" width="30" height="22" fill="rgba(255,255,255,.25)"/>
+          <circle cx="314" cy="298" r="2.6" fill="#e9d9b4"/>
+          <rect class="f-trim" x="140" y="214" width="320" height="10"/>
+          <rect class="f-roof" x="132" y="206" width="336" height="9"/>
+          <rect class="f-trim" x="150" y="224" width="9" height="114"/><rect class="f-trim" x="240" y="224" width="9" height="114"/><rect class="f-trim" x="351" y="224" width="9" height="114"/><rect class="f-trim" x="441" y="224" width="9" height="114"/>
+          <rect x="250" y="338" width="100" height="6" fill="#c9c2b6"/>
+        </svg>
+        <figcaption id="facadeCaption"></figcaption>
+      </figure>
+      <div class="studio-controls reveal">
+        <div class="opt" data-part="siding">
+          <h4>Siding</h4>
+          <div class="swatches">
+            <button style="--c:#EFE9DD" data-color="#EFE9DD" data-name="Alabaster" class="on"></button>
+            <button style="--c:#A3AE9A" data-color="#A3AE9A" data-name="Sage"></button>
+            <button style="--c:#2F3E52" data-color="#2F3E52" data-name="Federal Navy"></button>
+            <button style="--c:#4A4B4D" data-color="#4A4B4D" data-name="Iron Ore"></button>
+          </div>
+        </div>
+        <div class="opt" data-part="trim">
+          <h4>Trim</h4>
+          <div class="swatches">
+            <button style="--c:#FAFAF7" data-color="#FAFAF7" data-name="Pure White" class="on"></button>
+            <button style="--c:#1D1F22" data-color="#1D1F22" data-name="Black"></button>
+            <button style="--c:#C9A66B" data-color="#C9A66B" data-name="Brass"></button>
+          </div>
+        </div>
+        <div class="opt" data-part="roof">
+          <h4>Roof</h4>
+          <div class="swatches">
+            <button style="--c:#2C2F33" data-color="#2C2F33" data-name="Charcoal" class="on"></button>
+            <button style="--c:#6B5B4B" data-color="#6B5B4B" data-name="Weathered Wood"></button>
+            <button style="--c:#5E6B73" data-color="#5E6B73" data-name="Slate Blue"></button>
+          </div>
+        </div>
+        <div class="opt" data-part="door">
+          <h4>Front door</h4>
+          <div class="swatches">
+            <button style="--c:#1E2A38" data-color="#1E2A38" data-name="Navy" class="on"></button>
+            <button style="--c:#8E2F2A" data-color="#8E2F2A" data-name="Barn Red"></button>
+            <button style="--c:#B08D57" data-color="#B08D57" data-name="Brass Gold"></button>
+            <button style="--c:#4F6B4A" data-color="#4F6B4A" data-name="Forest"></button>
+          </div>
+        </div>
+        <label class="check"><input type="checkbox" id="stoneBase" checked> <span>Stone base and chimney</span></label>
+        <button class="btn btn-dark" id="facadeCta">Request this look
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
     </div>
   </div>
 </section>
@@ -524,6 +796,47 @@
   </div>
 </section>
 
+<section class="calc" id="calculator">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">Payment calculator</span><h2>Plan your purchase, <em>live or invest.</em></h2></div>
+      <p class="lead">Estimate your monthly payment and, if you buy to rent, your expected return.</p>
+    </div>
+    <div class="calc-grid reveal">
+      <form class="calc-form" id="calcForm" onsubmit="return false">
+        <div class="full"><label for="cModel">Home</label>
+          <select id="cModel">
+            <option value="395000">The Carolina · US$ 395,000</option>
+            <option value="540000">The Savannah · US$ 540,000</option>
+            <option value="165000" selected>The Madison Residences · from US$ 165,000</option>
+            <option value="custom">Other amount</option>
+          </select></div>
+        <div class="full"><label for="cPrice">Price (US$)</label><input id="cPrice" type="number" min="20000" step="1000" value="165000" inputmode="numeric"></div>
+        <div class="full"><label for="cDown">Down payment <output id="cDownOut">20%</output></label><input id="cDown" type="range" min="10" max="60" step="5" value="20"></div>
+        <div><label for="cTerm">Term</label>
+          <select id="cTerm"><option value="10">10 years</option><option value="15">15 years</option><option value="20" selected>20 years</option><option value="25">25 years</option></select></div>
+        <div><label for="cRate">Interest rate (%)</label><input id="cRate" type="number" min="1" max="20" step="0.1" value="8.5" inputmode="decimal"></div>
+        <label class="check full"><input type="checkbox" id="cInvest"> <span>I'm buying to rent it out</span></label>
+        <div class="full" id="cRentRow" hidden><label for="cRent">Expected monthly rent (US$)</label><input id="cRent" type="number" min="0" step="50" value="950" inputmode="numeric"></div>
+      </form>
+      <div class="calc-out" aria-live="polite">
+        <span class="eyebrow">Estimated monthly payment</span>
+        <strong class="calc-big" id="cMonthly">US$ 0</strong>
+        <dl class="calc-dl">
+          <div><dt>Down payment</dt><dd id="cDownAmt">US$ 0</dd></div>
+          <div><dt>Loan amount</dt><dd id="cLoan">US$ 0</dd></div>
+          <div><dt>Total interest</dt><dd id="cInterest">US$ 0</dd></div>
+          <div class="inv" hidden><dt>Gross rental yield</dt><dd id="cYield">0%</dd></div>
+          <div class="inv" hidden><dt>Monthly cash flow</dt><dd id="cFlow">US$ 0</dd></div>
+        </dl>
+        <p class="note">Estimate only. Rates and conditions depend on each bank; rent is your own assumption.</p>
+        <button class="btn btn-primary" id="calcCta">Talk to an advisor
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="quote">
   <div class="wrap reveal">
     <div class="stars">★★★★★</div>
@@ -549,7 +862,7 @@
       <div><label for="t">Phone</label><input id="t" type="tel" placeholder="+51 ..."></div>
       <div class="full"><label for="e">Email</label><input id="e" type="email" required placeholder="you@example.com"></div>
       <div><label for="s">I'm interested in</label>
-        <select id="s"><option>Single Family House</option><option>Luxury residence in an American Style Building</option><option>Investment / buy to rent</option><option>Not sure yet</option></select></div>
+        <select id="s"><option value="Single Family House">Single Family House</option><option value="Luxury residence in an American Style Building">Luxury residence in an American Style Building</option><option value="Investment / buy to rent">Investment / buy to rent</option><option value="Not sure yet">Not sure yet</option></select></div>
       <div><label for="p">Budget</label>
         <select id="p"><option>US$ 150k – 200k</option><option>US$ 200k – 400k</option><option>US$ 400k – 600k</option><option>US$ 600k+</option></select></div>
       <div class="full"><label for="m">Tell us about your project</label><textarea id="m" placeholder="Do you already own a lot? Are you looking to live or invest?"></textarea></div>
@@ -594,9 +907,21 @@
     <div class="modal-body">
       <span class="model-tag" id="modalTag"></span>
       <h3 id="modalTitle"></h3>
-      <div class="specs" id="modalSpecs"></div>
-      <ul class="mini" id="modalFeatures"></ul>
-      <div class="price" id="modalPrice"></div>
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" data-tab="overview" aria-selected="true">Overview</button>
+        <button type="button" role="tab" data-tab="plan" aria-selected="false">Floor plan</button>
+      </div>
+      <div data-panel="overview">
+        <div class="specs" id="modalSpecs"></div>
+        <ul class="mini" id="modalFeatures"></ul>
+        <div class="price" id="modalPrice"></div>
+      </div>
+      <div data-panel="plan" hidden>
+        <div class="plan-floors" id="planFloors"></div>
+        <svg class="plan-svg" id="planSvg" viewBox="0 0 400 260" role="img" aria-label="Floor plan"></svg>
+        <p class="plan-info" id="planInfo"></p>
+        <p class="plan-note">Illustrative layout. Final plans are adapted to each lot.</p>
+      </div>
       <div style="margin-top:24px"><button class="btn btn-primary" id="modalCta">Request information
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
     </div>
@@ -690,7 +1015,7 @@
   $('modalCta').addEventListener('click', () => {
     modal.close();
     if (current.interest) $('s').value = current.interest;
-    $('m').value = `I'd like more information about ${current.name}.`;
+    $('m').value = L(`I'd like more information about ${current.name}.`, `Quisiera más información sobre ${current.name}.`);
     document.getElementById('contact').scrollIntoView({behavior:'smooth'});
     setTimeout(() => $('n').focus({preventScroll:true}), 600);
   });
@@ -718,7 +1043,7 @@
     document.querySelectorAll('.amen-list li').forEach(x => x.classList.toggle('active', x === li));
     cap.classList.add('swap');
     setTimeout(() => {
-      capTitle.textContent = li ? li.querySelector('h4').textContent : defaultTitle;
+      capTitle.textContent = li ? li.querySelector('h4').textContent : tr(defaultTitle);
       capText.textContent = li ? li.querySelector('p').textContent : '';
       cap.classList.remove('swap');
     }, 180);
@@ -732,16 +1057,467 @@
   document.querySelector('.amen-list').addEventListener('mouseleave', () => showAmenity(null));
 
   // Formulario: estado de envío
-  const form = document.querySelector('form');
+  const form = document.querySelector('#contact form');
   form.onsubmit = e => {
     e.preventDefault();
     const btn = form.querySelector('button[type=submit]');
-    btn.disabled = true; btn.textContent = 'Sending…';
+    btn.disabled = true; btn.textContent = L('Sending…', 'Enviando…');
     setTimeout(() => {
       form.querySelector('.form-ok').style.display = 'block';
-      form.reset(); btn.disabled = false; btn.textContent = 'Request a quote';
+      form.reset(); btn.disabled = false; btn.textContent = tr('Request a quote');
     }, 700);
   };
+  // Traducción al español (texto en inglés → español)
+  const ES = {
+   "PREMIUM CONSTRUCTION": "CONSTRUCCIÓN PREMIUM",
+   "Homes": "Viviendas",
+   "Projects": "Proyectos",
+   "Amenities": "Amenities",
+   "Structure": "Estructura",
+   "Contact": "Contacto",
+   "Book a visit": "Agenda una visita",
+   "Cajamarca, Peru · 2,750 m above sea level": "Cajamarca, Perú · 2,750 m s. n. m.",
+   "The American home,": "La casa americana,",
+   "built in the Andes.": "construida en los Andes.",
+   "Single-family homes and American-style buildings in the mountains of Cajamarca, on a 100% steel, earthquake-resistant structure, with shared amenities and premium finishes.": "Casas unifamiliares y edificios de estilo americano en la sierra de Cajamarca, sobre estructura 100% de acero sismorresistente, con amenities compartidas y acabados premium.",
+   "Explore homes": "Ver viviendas",
+   "Get a quote": "Cotizar",
+   "Steel structure": "Estructura de acero",
+   "Year warranty": "Años de garantía",
+   "Product lines": "Líneas de producto",
+   "Steel": "Acero",
+   "Structural frame engineered to withstand earthquakes.": "Estructura diseñada para resistir sismos.",
+   "Our philosophy": "Nuestra filosofía",
+   "Quiet luxury.": "Lujo discreto.",
+   "Built to last.": "Hecho para durar.",
+   "We take the best of American homebuilding (open layouts, generous porches, the kitchen at the heart of the home) and adapt it to the Cajamarca valley: its altitude, its cool nights and its sunny days.": "Tomamos lo mejor de la vivienda norteamericana (espacios abiertos, porches amplios, la cocina como corazón del hogar) y lo adaptamos al valle de Cajamarca: su altitud, sus noches frescas y sus días soleados.",
+   "100% steel structure": "Estructura 100% de acero",
+   ": lighter, faster to build and safer in an earthquake.": ": más liviana, más rápida de construir y más segura ante un sismo.",
+   "Built for mountain weather": "Pensada para el clima de altura",
+   "with continuous insulation, double glazing and a fireplace-ready living room.": "con aislamiento continuo, doble vidrio y sala preparada para chimenea.",
+   "Fixed price": "Precio cerrado",
+   "and a contractual schedule. No surprises.": "y cronograma por contrato. Sin sorpresas.",
+   "See how we work": "Ver cómo trabajamos",
+   "Our homes": "Nuestras viviendas",
+   "Two ways to live": "Dos formas de vivir",
+   "the American way.": "al estilo americano.",
+   "Both share the same DNA: an earthquake-resistant steel structure, American design and premium finishes, with views of the Andes.": "Ambas comparten el mismo ADN: estructura de acero sismorresistente, diseño americano y acabados premium, con vista a los Andes.",
+   "Premium homes": "Casas premium",
+   "A premium American home on your own land: welcoming porch, chef’s kitchen, a primary suite with spa bath and covered terraces facing the mountains.": "Una casa americana premium en tu propio terreno: porche de bienvenida, cocina de chef, suite principal con baño tipo spa y terrazas techadas frente a las montañas.",
+   "3 to 5 bedrooms · 250 to 500 m²": "De 3 a 5 dormitorios · 250 a 500 m²",
+   "Three-car garage, landscaped grounds and outdoor fire pit": "Cochera para 3 autos, jardines paisajistas y fogatero exterior",
+   "Architect-designed and fully customizable": "Diseño de arquitecto, totalmente personalizable",
+   "See models": "Ver modelos",
+   "Luxury residences": "Residencias de lujo",
+   "Boutique luxury residences inspired by upscale American buildings: floor-to-ceiling windows, private terraces, a concierge lobby and a shared rooftop overlooking the valley.": "Residencias boutique de lujo inspiradas en los edificios exclusivos de EE. UU.: ventanales de piso a techo, terrazas privadas, lobby con conserjería y un rooftop compartido con vista al valle.",
+   "1 to 3 bedroom residences and penthouses · 90 to 220 m²": "Residencias y penthouses de 1 a 3 dormitorios · 90 a 220 m²",
+   "Rooftop with common areas and amenities": "Rooftop con áreas comunes y amenities",
+   "Imported finishes, smart home and private parking": "Acabados importados, domótica y estacionamiento privado",
+   "See amenities": "Ver amenities",
+   "Why Cajamarca": "Por qué Cajamarca",
+   "A mountain city": "Una ciudad de montaña",
+   "on the rise.": "en crecimiento.",
+   "Andean quality of life in one of Peru's most dynamic regional economies, driven by mining investment and a growing professional community.": "Calidad de vida andina en una de las economías regionales más dinámicas del Perú, impulsada por la inversión minera y una comunidad profesional en crecimiento.",
+   "Above sea level": "Sobre el nivel del mar",
+   "A green Andean valley with sunny days and cool nights all year round.": "Un valle andino verde, con días soleados y noches frescas todo el año.",
+   "US$ 16.5 B": "US$ 16,500 M",
+   "Mining project pipeline": "Cartera de proyectos mineros",
+   "Large regional projects keep demand for quality housing high.": "Los grandes proyectos de la región mantienen alta la demanda de vivienda de calidad.",
+   "Source: Energiminas": "Fuente: Energiminas",
+   "Rent increase linked to mining": "Alza de alquileres ligada a la minería",
+   "A strong signal for buy-to-rent investors.": "Una señal clara para quienes compran para alquilar.",
+   "Source: Gestión, 2026": "Fuente: Gestión, 2026",
+   "Flight to Lima": "Vuelo a Lima",
+   "Daily flights from Cajamarca's airport, minutes from the city center.": "Vuelos diarios desde el aeropuerto de Cajamarca, a minutos del centro.",
+   "Featured projects": "Proyectos destacados",
+   "Find": "Encuentra",
+   "your place.": "tu lugar.",
+   "Full catalog": "Catálogo completo",
+   "View details": "Ver detalles",
+   "Single Family · Modern Farmhouse": "Unifamiliar · Modern Farmhouse",
+   "Single Family · Contemporary": "Unifamiliar · Contemporánea",
+   "bed": "dorm.",
+   "bath": "baños",
+   "From": "Desde",
+   "residences": "residencias",
+   "Choose": "Elige",
+   "your residence.": "tu residencia.",
+   "Filter by bedrooms and status, sort by price or size, and tap a residence to ask about it.": "Filtra por dormitorios y estado, ordena por precio o tamaño, y toca una residencia para consultar por ella.",
+   "All": "Todas",
+   "1 bed": "1 dorm.",
+   "2 beds": "2 dorm.",
+   "3 beds": "3 dorm.",
+   "Available only": "Solo disponibles",
+   "Residence": "Residencia",
+   "Floor": "Piso",
+   "Bedrooms": "Dormitorios",
+   "Size": "Área",
+   "View": "Vista",
+   "Price": "Precio",
+   "Status": "Estado",
+   "Valley": "Valle",
+   "Available": "Disponible",
+   "Mountains": "Montañas",
+   "Sold": "Vendido",
+   "Courtyard": "Patio interior",
+   "Corner, two views": "Esquina, doble vista",
+   "Reserved": "Reservado",
+   "Panoramic": "Panorámica",
+   "Sample availability for this preview. Prices and status will be updated with the official price list.": "Disponibilidad de ejemplo para esta vista previa. Los precios y estados se actualizarán con la lista de precios oficial.",
+   "Design studio": "Estudio de diseño",
+   "Make the facade": "Haz tuya",
+   "yours.": "la fachada.",
+   "Try the classic American palette on a Single Family House: siding, trim, roof and front door.": "Prueba la paleta americana clásica en una Single Family House: revestimiento, molduras, techo y puerta principal.",
+   "Siding": "Revestimiento",
+   "Trim": "Molduras",
+   "Roof": "Techo",
+   "Front door": "Puerta principal",
+   "Stone base and chimney": "Base de piedra y chimenea",
+   "Request this look": "Quiero este diseño",
+   "The rooftop,": "El rooftop,",
+   "your new living room.": "tu nueva sala.",
+   "Our buildings are crowned by a shared rooftop designed for the community: a place to work, train, celebrate and unwind with views of the Cajamarca valley and the surrounding mountains.": "Nuestros edificios culminan en un rooftop compartido pensado para la comunidad: un lugar para trabajar, entrenar, celebrar y descansar con vista al valle de Cajamarca y sus montañas.",
+   "Shared rooftop": "Rooftop compartido",
+   "Lounge terrace with mountain views": "Terraza lounge con vista a las montañas",
+   "Fire pit lounge": "Lounge con fogatero",
+   "Gather around the fire on cool Andean evenings.": "Reúnete junto al fuego en las noches frescas de la sierra.",
+   "BBQ and outdoor dining": "Zona BBQ y comedor exterior",
+   "Grills, communal tables and a bar for get-togethers.": "Parrillas, mesas comunales y barra para reuniones.",
+   "Coworking and meeting room": "Coworking y sala de reuniones",
+   "High-speed wifi and quiet space to work from home.": "Wifi de alta velocidad y un espacio tranquilo para trabajar desde casa.",
+   "Fitness center": "Gimnasio",
+   "Cardio, weights and an open-air yoga deck.": "Cardio, pesas y un deck de yoga al aire libre.",
+   "Kids, pets and gardens": "Niños, mascotas y jardines",
+   "Play area, pet zone and a shared vegetable garden.": "Zona de juegos, área para mascotas y huerto compartido.",
+   "Concierge lobby and 24/7 security": "Lobby con conserjería y seguridad 24/7",
+   "Doorman, access control and private parking.": "Portero, control de acceso y estacionamiento privado.",
+   "How we work": "Cómo trabajamos",
+   "From idea to keys,": "De la idea a las llaves,",
+   "in 4 steps.": "en 4 pasos.",
+   "One team, one contract. Design, permits, construction and handover under a single responsibility.": "Un solo equipo, un solo contrato. Diseño, licencias, construcción y entrega bajo una misma responsabilidad.",
+   "Consultation": "Consulta",
+   "We learn about your lot, budget and goals, whether you want to live or invest. Free site visit.": "Conocemos tu terreno, presupuesto y objetivos, ya sea para vivir o invertir. Visita al terreno sin costo.",
+   "Design": "Diseño",
+   "Plans, structural engineering and 3D renders. Choose your finishes at our showroom.": "Planos, cálculo estructural y renders 3D. Eliges tus acabados en nuestro showroom.",
+   "Construction": "Construcción",
+   "Steel is fabricated to measure and assembled on site: less time, less waste.": "El acero se fabrica a medida y se monta en obra: menos tiempo, menos desperdicio.",
+   "Handover": "Entrega",
+   "Turnkey delivery with a 10-year structural warranty and after-sales service.": "Entrega llave en mano con garantía estructural de 10 años y servicio postventa.",
+   "Steel that protects": "Acero que protege",
+   "what matters most.": "lo que más importa.",
+   "Cajamarca sits in an active seismic zone. Every home and building we make stands on a 100% steel frame, the system of choice in earthquake country from California to Japan.": "Cajamarca está en una zona sísmica activa. Todas nuestras casas y edificios se levantan sobre una estructura 100% de acero, el sistema preferido en zonas sísmicas desde California hasta Japón.",
+   "100% steel frame": "Marco 100% de acero",
+   "Galvanized steel profiles with certified structural calculations.": "Perfiles de acero galvanizado con cálculo estructural certificado.",
+   "Earthquake resistant": "Sismorresistente",
+   "Steel is ductile: it flexes and absorbs a quake's energy instead of cracking.": "El acero es dúctil: se flexiona y absorbe la energía del sismo en lugar de agrietarse.",
+   "Warm at altitude": "Cálida en la altura",
+   "Continuous insulation and low-E double glazing for cold mountain nights.": "Aislamiento continuo y doble vidrio low-E para las noches frías de la sierra.",
+   "10-year warranty": "Garantía de 10 años",
+   "Structural coverage by contract, plus first-year maintenance.": "Cobertura estructural por contrato y mantenimiento el primer año.",
+   "Payment calculator": "Calculadora de cuotas",
+   "Plan your purchase,": "Planifica tu compra,",
+   "live or invest.": "para vivir o invertir.",
+   "Estimate your monthly payment and, if you buy to rent, your expected return.": "Estima tu cuota mensual y, si compras para alquilar, tu rentabilidad esperada.",
+   "Home": "Vivienda",
+   "The Madison Residences · from US$ 165,000": "The Madison Residences · desde US$ 165,000",
+   "Other amount": "Otro monto",
+   "Price (US$)": "Precio (US$)",
+   "Down payment": "Cuota inicial",
+   "Term": "Plazo",
+   "10 years": "10 años",
+   "15 years": "15 años",
+   "20 years": "20 años",
+   "25 years": "25 años",
+   "Interest rate (%)": "Tasa de interés (%)",
+   "I'm buying to rent it out": "Compro para alquilar",
+   "Expected monthly rent (US$)": "Alquiler mensual esperado (US$)",
+   "Estimated monthly payment": "Cuota mensual estimada",
+   "Loan amount": "Monto del préstamo",
+   "Total interest": "Intereses totales",
+   "Gross rental yield": "Rentabilidad bruta",
+   "Monthly cash flow": "Flujo mensual",
+   "Estimate only. Rates and conditions depend on each bank; rent is your own assumption.": "Solo es una estimación. Las tasas y condiciones dependen de cada banco; el alquiler es un supuesto tuyo.",
+   "Talk to an advisor": "Hablar con un asesor",
+   "“We wanted a home like the ones we saw in Colorado, with mountain views and peace of mind when the ground shakes. Casa Americana delivered both.”": "“Queríamos una casa como las que vimos en Colorado, con vista a las montañas y tranquilidad cuando tiembla. Casa Americana nos dio ambas cosas.”",
+   "The Rodríguez family · The Savannah model": "Familia Rodríguez · Modelo The Savannah",
+   "Let's talk": "Hablemos",
+   "Start building": "Empieza a construir",
+   "your story.": "tu historia.",
+   "Visit our showroom in Cajamarca, tour a project under construction, or book a free assessment of your lot.": "Visita nuestro showroom en Cajamarca, recorre una obra en construcción o agenda una evaluación gratuita de tu terreno.",
+   "Phone / WhatsApp": "Teléfono / WhatsApp",
+   "Email": "Correo",
+   "Av. Principal 123, Cajamarca, Peru": "Av. Principal 123, Cajamarca, Perú",
+   "Name": "Nombre",
+   "Phone": "Teléfono",
+   "I'm interested in": "Me interesa",
+   "Luxury residence in an American Style Building": "Residencia de lujo en American Style Building",
+   "Investment / buy to rent": "Inversión / comprar para alquilar",
+   "Not sure yet": "Aún no lo sé",
+   "Budget": "Presupuesto",
+   "Tell us about your project": "Cuéntanos sobre tu proyecto",
+   "Request a quote": "Solicitar cotización",
+   "Thank you! We'll get back to you within 24 hours.": "¡Gracias! Te responderemos en menos de 24 horas.",
+   "American-style homes and buildings in Cajamarca, on an earthquake-resistant steel structure.": "Casas y edificios de estilo americano en Cajamarca, sobre estructura de acero sismorresistente.",
+   "Company": "Empresa",
+   "Process": "Proceso",
+   "Quality": "Calidad",
+   "Follow us": "Síguenos",
+   "© 2026 Casa Americana. All rights reserved.": "© 2026 Casa Americana. Todos los derechos reservados.",
+   "Preview site · Images for reference only": "Sitio de vista previa · Imágenes referenciales",
+   "Overview": "Resumen",
+   "Floor plan": "Plano",
+   "Residences and penthouses from 90 to 220 m²": "Residencias y penthouses de 90 a 220 m²",
+   "Floor-to-ceiling windows and private terraces": "Ventanales de piso a techo y terrazas privadas",
+   "Shared rooftop: fire pit lounge, BBQ, gym and coworking": "Rooftop compartido: lounge con fogatero, BBQ, gimnasio y coworking",
+   "Private parking and storage": "Estacionamiento privado y depósito",
+   "Typical 2-bedroom residence": "Residencia típica de 2 dormitorios",
+   "Living & dining": "Sala y comedor",
+   "Kitchen": "Cocina",
+   "Laundry": "Lavandería",
+   "Terrace": "Terraza",
+   "Primary bedroom": "Dormitorio principal",
+   "Bath": "Baño",
+   "Bedroom 2": "Dormitorio 2",
+   "Bedroom 3": "Dormitorio 3",
+   "Bedroom 4": "Dormitorio 4",
+   "Bedroom 5": "Dormitorio 5",
+   "Illustrative layout. Final plans are adapted to each lot.": "Distribución referencial. Los planos finales se adaptan a cada terreno.",
+   "Request information": "Solicitar información",
+   "Casa Americana home": "Casa Americana inicio",
+   "Open menu": "Abrir menú",
+   "American-style home on a green hillside at sunset": "Casa de estilo americano en una ladera verde al atardecer",
+   "Open-concept living room with natural light": "Sala de concepto abierto con luz natural",
+   "Premium American single-family home with wraparound porch": "Casa unifamiliar americana premium con porche envolvente",
+   "Luxury residential building with pool and landscaped gardens": "Edificio residencial de lujo con piscina y jardines",
+   "The Carolina, modern farmhouse estate": "The Carolina, casa modern farmhouse",
+   "The Savannah, contemporary estate": "The Savannah, casa contemporánea",
+   "The Madison Residences, luxury building with landscaped terraces": "The Madison Residences, edificio de lujo con terrazas ajardinadas",
+   "Facade preview": "Vista previa de la fachada",
+   "Rooftop terrace at sunset overlooking the hills": "Terraza en el rooftop al atardecer con vista a los cerros",
+   "Structure being assembled on site": "Montaje de la estructura en obra",
+   "American-style kitchen with premium finishes": "Cocina de estilo americano con acabados premium",
+   "Bright living room": "Sala luminosa",
+   "Your name": "Tu nombre",
+   "you@example.com": "tu@correo.com",
+   "Do you already own a lot? Are you looking to live or invest?": "¿Ya tienes terreno? ¿Buscas vivir o invertir?",
+   "Back to top": "Volver arriba",
+   "Chat on WhatsApp": "Escríbenos por WhatsApp",
+   "Close": "Cerrar",
+   "Photo": "Foto",
+   "Ground floor": "Primer piso",
+   "Upper floor": "Segundo piso",
+   "Garage": "Cochera",
+   "Mudroom": "Mudroom",
+   "Study": "Estudio",
+   "Dining": "Comedor",
+   "Great room": "Sala principal",
+   "Primary suite": "Suite principal",
+   "Primary bath": "Baño principal",
+   "Walk-in closet": "Walk-in closet",
+   "Loft": "Estar íntimo",
+   "Media room": "Sala de cine",
+   "Scullery": "Cocina auxiliar",
+   "Office": "Oficina",
+   "Closet": "Clóset",
+   "Double-height great room with stone fireplace": "Sala principal de doble altura con chimenea de piedra",
+   "Chef’s kitchen with island and walk-in pantry": "Cocina de chef con isla y despensa",
+   "Primary suite with spa bath and walk-in closet": "Suite principal con baño tipo spa y walk-in closet",
+   "Covered porch and terrace facing the mountains": "Porche y terraza techados frente a las montañas",
+   "Two-car garage and mudroom": "Cochera para 2 autos y mudroom",
+   "Glass-walled living room open to the garden": "Sala con muros de vidrio abierta al jardín",
+   "Chef’s kitchen with scullery": "Cocina de chef con cocina auxiliar",
+   "Five en-suite bedrooms": "Cinco dormitorios con baño propio",
+   "Home office and media room": "Oficina en casa y sala de cine",
+   "Three-car garage, landscaped lot and fire pit": "Cochera para 3 autos, jardín paisajista y fogatero"
+  };
+
+  // ---------- Idioma ----------
+  const ES_INV = Object.fromEntries(Object.entries(ES).map(([en, es]) => [es, en]));
+  let lang = 'en';
+  try { lang = localStorage.getItem('ca-lang') === 'es' ? 'es' : 'en'; } catch (e) {}
+  const L = (en, es) => lang === 'es' ? es : en;
+  const tr = s => { const en = ES_INV[s] || s; return lang === 'es' ? (ES[en] || en) : en; };
+  const fmt = n => 'US$ ' + Math.round(n).toLocaleString('en-US');
+  const applyLang = (root = document.body) => {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {acceptNode: n =>
+      n.parentElement.closest('script,style') || !n.nodeValue.trim() ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT});
+    const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(n => {
+      const raw = n.nodeValue, key = raw.replace(/\s+/g, ' ').trim(), out = tr(key);
+      if (out !== key) n.nodeValue = raw.match(/^\s*/)[0] + out + raw.match(/\s*$/)[0];
+    });
+    root.querySelectorAll('[placeholder],[alt],[aria-label]').forEach(el => ['placeholder', 'alt', 'aria-label'].forEach(a => {
+      const v = el.getAttribute(a); if (v) { const out = tr(v); if (out !== v) el.setAttribute(a, out); }
+    }));
+  };
+  const langBtn = document.getElementById('langBtn');
+  const setLang = l => {
+    lang = l;
+    try { localStorage.setItem('ca-lang', l); } catch (e) {}
+    document.documentElement.lang = l;
+    langBtn.textContent = l === 'es' ? 'EN' : 'ES';
+    langBtn.setAttribute('aria-label', l === 'es' ? 'Switch to English' : 'Cambiar a español');
+    applyLang();
+    renderUnits(); updateCalc(); updateFacade();
+    if (modal.open && current) renderPlan();
+  };
+  langBtn.addEventListener('click', () => setLang(lang === 'es' ? 'en' : 'es'));
+
+  const goContact = (interest, message) => {
+    if (interest) $('s').value = interest;
+    $('m').value = message;
+    document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
+    setTimeout(() => $('n').focus({preventScroll: true}), 600);
+  };
+
+  // ---------- Planos en la ficha ----------
+  const PLANS = {
+    'The Carolina': [
+      {name: 'Ground floor', area: 180, rooms: [['Garage',0,0,6,7],['Mudroom',0,7,6,3],['Study',0,10,6,3],['Kitchen',6,0,7,5],['Dining',13,0,7,5],['Great room',6,5,14,8]]},
+      {name: 'Upper floor', area: 160, rooms: [['Primary suite',0,0,8,7],['Primary bath',0,7,4,6],['Walk-in closet',4,7,4,6],['Loft',8,0,5,6],['Bedroom 2',13,0,7,6],['Bedroom 3',8,6,6,7],['Bedroom 4',14,6,6,7]]}],
+    'The Savannah': [
+      {name: 'Ground floor', area: 260, rooms: [['Garage',0,0,7,6],['Media room',0,6,7,7],['Kitchen',7,0,6,5],['Scullery',13,0,3,5],['Office',16,0,4,5],['Living & dining',7,5,13,8]]},
+      {name: 'Upper floor', area: 220, rooms: [['Primary suite',0,0,8,7],['Primary bath',0,7,5,6],['Closet',5,7,3,6],['Bedroom 2',8,0,6,6],['Bedroom 3',14,0,6,6],['Bedroom 4',8,6,6,7],['Bedroom 5',14,6,6,7]]}],
+    'The Madison Residences': [
+      {name: 'Typical 2-bedroom residence', area: 120, rooms: [['Living & dining',0,0,11,7],['Kitchen',11,0,5,4],['Laundry',11,4,5,3],['Terrace',16,0,4,7],['Primary bedroom',0,7,8,6],['Bath',8,7,3,6],['Bedroom 2',11,7,9,6]]}]
+  };
+  let floorIdx = 0;
+  // Parte el nombre del ambiente en dos líneas si no entra en el ancho
+  const label = (s, px) => s.length * 6.6 < px - 8 || !s.includes(' ') ? [s] : [s.slice(0, s.lastIndexOf(' ')), s.slice(s.lastIndexOf(' ') + 1)];
+  const renderPlan = () => {
+    const floors = PLANS[current.name]; if (!floors) return;
+    const f = floors[floorIdx], U = 20;
+    $('planFloors').innerHTML = floors.length > 1
+      ? `<div class="seg">${floors.map((x, i) => `<button type="button" class="${i === floorIdx ? 'on' : ''}" data-floor="${i}">${tr(x.name)}</button>`).join('')}</div>`
+      : `<span class="model-tag">${tr(f.name)}</span>`;
+    $('planSvg').innerHTML = f.rooms.map(([n, x, y, w, h]) => {
+      const m2 = Math.round(w * h * f.area / 260), cx = (x + w / 2) * U, cy = (y + h / 2) * U;
+      return `<g class="room" tabindex="0" data-name="${n}" data-m2="${m2}"><rect x="${x * U + 1}" y="${y * U + 1}" width="${w * U - 2}" height="${h * U - 2}"/>` +
+        label(tr(n), w * U).map((t, i, a) => `<text x="${cx}" y="${cy - 4 - (a.length - 1 - i) * 13}" text-anchor="middle" font-size="12" font-weight="600">${t}</text>`).join('') +
+        `<text x="${cx}" y="${cy + 12}" text-anchor="middle" font-size="11" opacity=".7">${m2} m²</text></g>`;
+    }).join('');
+    $('planInfo').textContent = L(`${f.area} m² · tap a room to see its size`, `${f.area} m² · toca un ambiente para ver su tamaño`);
+    $('planFloors').querySelectorAll('[data-floor]').forEach(b => b.onclick = () => { floorIdx = +b.dataset.floor; renderPlan(); });
+    $('planSvg').querySelectorAll('.room').forEach(g => {
+      const pick = () => {
+        $('planSvg').querySelectorAll('.room').forEach(r => r.classList.toggle('on', r === g));
+        $('planInfo').textContent = `${tr(g.dataset.name)} · ${g.dataset.m2} m²`;
+      };
+      g.addEventListener('mouseenter', pick); g.addEventListener('click', pick); g.addEventListener('focus', pick);
+    });
+  };
+  const showTab = name => {
+    modal.querySelectorAll('[role=tab]').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === name));
+    modal.querySelectorAll('[data-panel]').forEach(p => p.hidden = p.dataset.panel !== name);
+  };
+  modal.querySelectorAll('[role=tab]').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+  document.querySelectorAll('.model').forEach(card => card.addEventListener('click', () => {
+    floorIdx = 0; showTab('overview'); renderPlan(); applyLang(modal);
+  }));
+
+  // ---------- Disponibilidad del Madison ----------
+  const TYPES = [['A',1,90,'Valley'],['B',2,120,'Mountains'],['C',2,130,'Courtyard'],['D',3,165,'Corner, two views']];
+  const PH = [['PH1',3,220,'Panoramic'],['PH2',3,205,'Panoramic'],['PH3',2,180,'Mountains'],['PH4',2,175,'Valley']];
+  const SOLD = ['1B','1D','2A','3C','5D','PH2'], RESERVED = ['2D','4B','PH1'];
+  const UNITS = [];
+  for (let fl = 1; fl <= 6; fl++) (fl < 6 ? TYPES.map(([l, b, m, v]) => [fl + l, b, m, v]) : PH).forEach(([unit, beds, m2, view]) => {
+    const price = Math.round(m2 * (fl < 6 ? 1830 : 2100) * (1 + 0.02 * (fl - 1)) / 1000) * 1000;
+    UNITS.push({unit, floor: fl, beds, m2, view, price, status: SOLD.includes(unit) ? 'Sold' : RESERVED.includes(unit) ? 'Reserved' : 'Available'});
+  });
+  let beds = 'all', sortKey = 'floor', sortDir = 1;
+  const renderUnits = () => {
+    const only = $('onlyAvail').checked;
+    const rows = UNITS.filter(u => (beds === 'all' || u.beds == beds) && (!only || u.status === 'Available'))
+      .sort((a, b) => (a[sortKey] > b[sortKey] ? 1 : a[sortKey] < b[sortKey] ? -1 : 0) * sortDir || (a.unit > b.unit ? 1 : -1));
+    $('unitRows').innerHTML = rows.map(u => `<tr class="${u.status === 'Sold' ? 'is-sold' : ''}" data-unit="${u.unit}" tabindex="${u.status === 'Sold' ? -1 : 0}">
+      <td>${u.unit}</td><td>${u.floor === 6 ? L('Penthouse', 'Penthouse') : u.floor}</td><td>${u.beds}</td><td>${u.m2} m²</td>
+      <td>${tr(u.view)}</td><td class="price-cell">${u.status === 'Sold' ? '—' : fmt(u.price)}</td>
+      <td><span class="chip ${u.status.toLowerCase()}">${tr(u.status)}</span></td></tr>`).join('');
+    const avail = UNITS.filter(u => u.status === 'Available').length;
+    $('availCount').textContent = L(`Showing ${rows.length} of ${UNITS.length} · ${avail} available`, `Mostrando ${rows.length} de ${UNITS.length} · ${avail} disponibles`);
+    $('unitRows').querySelectorAll('tr:not(.is-sold)').forEach(tr_ => {
+      const u = UNITS.find(x => x.unit === tr_.dataset.unit);
+      const go = () => goContact('Luxury residence in an American Style Building', L(
+        `I'm interested in residence ${u.unit} at The Madison Residences (${u.beds} bedrooms, ${u.m2} m², ${fmt(u.price)}).`,
+        `Me interesa la residencia ${u.unit} de The Madison Residences (${u.beds} dormitorios, ${u.m2} m², ${fmt(u.price)}).`));
+      tr_.addEventListener('click', go);
+      tr_.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
+    });
+  };
+  document.querySelectorAll('[data-beds]').forEach(b => b.addEventListener('click', () => {
+    beds = b.dataset.beds; document.querySelectorAll('[data-beds]').forEach(x => x.classList.toggle('on', x === b)); renderUnits();
+  }));
+  $('onlyAvail').addEventListener('change', renderUnits);
+  document.querySelectorAll('[data-sort]').forEach(b => b.addEventListener('click', () => {
+    sortDir = sortKey === b.dataset.sort ? -sortDir : 1; sortKey = b.dataset.sort;
+    document.querySelectorAll('[data-sort]').forEach(x => { x.classList.toggle('sorted', x === b); x.classList.toggle('asc', x === b && sortDir === 1); x.classList.toggle('desc', x === b && sortDir === -1); });
+    renderUnits();
+  }));
+
+  // ---------- Estudio de fachada ----------
+  const facade = $('facade');
+  const pick = {};
+  const updateFacade = () => {
+    document.querySelectorAll('.opt').forEach(o => {
+      const on = o.querySelector('.on'); pick[o.dataset.part] = on.dataset.name;
+      facade.style.setProperty('--' + o.dataset.part, on.dataset.color);
+      const h = o.querySelector('h4'); h.querySelector('span')?.remove(); h.insertAdjacentHTML('beforeend', `<span>${on.dataset.name}</span>`);
+    });
+    facade.classList.toggle('no-stone', !$('stoneBase').checked);
+    $('facadeCaption').textContent = L(
+      `${pick.siding} siding · ${pick.trim} trim · ${pick.roof} roof · ${pick.door} door${$('stoneBase').checked ? ' · stone base' : ''}`,
+      `Revestimiento ${pick.siding} · molduras ${pick.trim} · techo ${pick.roof} · puerta ${pick.door}${$('stoneBase').checked ? ' · base de piedra' : ''}`);
+  };
+  document.querySelectorAll('.swatches button').forEach(b => {
+    b.setAttribute('aria-label', b.dataset.name); b.type = 'button';
+    b.addEventListener('click', () => { b.parentElement.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); updateFacade(); });
+  });
+  $('stoneBase').addEventListener('change', updateFacade);
+  $('facadeCta').addEventListener('click', () => goContact('Single Family House', L(
+    `I'd like a Single Family House with ${pick.siding} siding, ${pick.trim} trim, a ${pick.roof} roof and a ${pick.door} front door${$('stoneBase').checked ? ', with a stone base' : ''}.`,
+    `Quisiera una Single Family House con revestimiento ${pick.siding}, molduras ${pick.trim}, techo ${pick.roof} y puerta ${pick.door}${$('stoneBase').checked ? ', con base de piedra' : ''}.`)));
+
+  // ---------- Calculadora ----------
+  const c = id => $(id);
+  const updateCalc = () => {
+    const price = Math.max(+c('cPrice').value || 0, 0), down = +c('cDown').value / 100;
+    const n = +c('cTerm').value * 12, r = (+c('cRate').value || 0) / 100 / 12;
+    const loan = price * (1 - down);
+    const pay = r ? loan * r / (1 - Math.pow(1 + r, -n)) : loan / n;
+    c('cDownOut').textContent = Math.round(down * 100) + '%';
+    c('cMonthly').innerHTML = `${fmt(pay)}<small>${L('/ month', '/ mes')}</small>`;
+    c('cDownAmt').textContent = fmt(price * down);
+    c('cLoan').textContent = fmt(loan);
+    c('cInterest').textContent = fmt(pay * n - loan);
+    const inv = c('cInvest').checked;
+    c('cRentRow').hidden = !inv;
+    document.querySelectorAll('.calc-dl .inv').forEach(d => d.hidden = !inv);
+    if (inv) {
+      const rent = +c('cRent').value || 0, flow = rent - pay;
+      c('cYield').textContent = price ? (rent * 12 / price * 100).toFixed(1) + '%' : '—';
+      c('cFlow').textContent = (flow < 0 ? '− ' : '+ ') + fmt(Math.abs(flow));
+      c('cFlow').className = flow < 0 ? 'neg' : 'pos';
+    }
+  };
+  c('cModel').addEventListener('change', () => {
+    if (c('cModel').value !== 'custom') {
+      c('cPrice').value = c('cModel').value;
+      c('cRent').value = Math.round(c('cModel').value * 0.0058 / 50) * 50;
+    }
+    updateCalc();
+  });
+  c('cPrice').addEventListener('input', () => { c('cModel').value = [...c('cModel').options].some(o => o.value === c('cPrice').value) ? c('cPrice').value : 'custom'; updateCalc(); });
+  ['cDown', 'cTerm', 'cRate', 'cInvest', 'cRent'].forEach(id => c(id).addEventListener('input', updateCalc));
+  c('cInvest').addEventListener('change', updateCalc);
+  c('calcCta').addEventListener('click', () => {
+    const home = c('cModel').selectedOptions[0].text;
+    goContact(c('cModel').value === '165000' ? 'Luxury residence in an American Style Building' : c('cModel').value === 'custom' ? '' : 'Single Family House', L(
+      `I'd like financing advice. Home: ${home}. Price ${fmt(c('cPrice').value)}, ${c('cDown').value}% down, ${c('cTerm').value} years at ${c('cRate').value}%.`,
+      `Quisiera asesoría de financiamiento. Vivienda: ${home}. Precio ${fmt(c('cPrice').value)}, ${c('cDown').value}% de inicial, ${c('cTerm').value} años al ${c('cRate').value}%.`));
+  });
+
+  renderUnits(); updateFacade(); updateCalc();
+  if (lang === 'es') setLang('es');
 </script>
 </body>
 </html>
