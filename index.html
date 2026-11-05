@@ -433,13 +433,6 @@
     .seg button{padding:.5rem .7rem}
   }
 
-  /* ESTÁNDAR CASA AMERICANA */
-  .std-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:clamp(28px,4vw,48px)}
-  .std-stats > div{padding:22px 20px}
-  .std-stats > div + div{border-left:1px solid var(--line)}
-  .std-stats b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,1.5rem + 1.2vw,2.6rem);color:var(--navy);line-height:1;font-variant-numeric:lining-nums}
-  .std-stats span{display:block;margin-top:.5rem;font-size:.85rem;color:var(--muted)}
-
   /* ESTIMADOR DE RENTA */
   .calc-range{color:rgba(255,255,255,.7);font-size:.9rem;margin-top:-6px}
   .madison-only[hidden]{display:none}
@@ -457,20 +450,10 @@
   .price-note{display:block;margin-top:4px;font-size:.78rem;color:var(--muted)}
 
   @media (max-width:1000px){
-    .std-stats{grid-template-columns:1fr 1fr}
-    .std-stats > div:nth-child(3){border-left:0}
-    .std-stats > div:nth-child(n+3){border-top:1px solid var(--line)}
     .buy-steps{grid-template-columns:1fr}
   }
 
-  /* ESTÁNDAR: PILARES */
-  .std-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,3.5vw,48px) clamp(24px,3vw,40px)}
-  .std-card .ic{width:48px;height:48px;border-radius:50%;background:var(--cream);display:grid;place-items:center;color:var(--brass);transition:background .25s ease,color .25s ease}
-  .std-card:hover .ic{background:var(--brass);color:#fff}
-  .std-card h3{font-size:1.5rem;margin:.9rem 0 .7rem}
-  .std-card ul{list-style:none;display:grid;gap:8px}
-  .std-card li{position:relative;padding-left:20px;font-size:.93rem;color:var(--muted)}
-  .std-card li::before{content:"";position:absolute;left:0;top:.65em;width:10px;height:2px;background:var(--brass)}
+  /* ESTÁNDAR */
   .std-more{margin-top:clamp(28px,4vw,44px)}
   .std-more .link{background:none;border:0;border-bottom:2px solid var(--brass);cursor:pointer;font-family:var(--sans)}
   dialog.std-dialog{width:min(1000px,calc(100vw - 32px))}
@@ -517,18 +500,50 @@
   .chip.sold{background:#ececec;color:#7a7a7a}
 
   @media (max-width:1000px){
-    .std-grid{grid-template-columns:1fr 1fr}
     .avail-grid{grid-template-columns:1fr}
     .unit-card{position:static}
   }
   @media (max-width:600px){
-    .std-grid{grid-template-columns:1fr}
     .tower{padding:12px 12px 0}
     .tower-ground{margin:0 -12px}
     .tower-row{grid-template-columns:34px repeat(4,1fr);gap:5px}
     .cell{height:42px;font-size:.72rem}
     .unit-specs{grid-template-columns:1fr 1fr}
     .unit-specs > div:nth-child(3){grid-column:1/-1;padding-left:0;border-left:0;border-top:1px solid var(--line)}
+  }
+
+  /* ESTÁNDAR: RECORRIDO POR AMBIENTES */
+  .rooms{display:grid;grid-template-columns:260px 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+  .room-index{display:grid;gap:2px;border-left:1px solid var(--line)}
+  .room-index button{position:relative;text-align:left;background:none;border:0;padding:12px 0 12px 22px;font-family:var(--serif);font-size:1.35rem;color:var(--muted);cursor:pointer;transition:color .25s ease,padding .25s ease}
+  .room-index button::before{content:"";position:absolute;left:-1px;top:8px;bottom:8px;width:2px;background:var(--brass);transform:scaleY(0);transition:transform .3s ease}
+  .room-index button:hover{color:var(--navy)}
+  .room-index button[aria-selected="true"]{color:var(--navy);padding-left:28px}
+  .room-index button[aria-selected="true"]::before{transform:scaleY(1)}
+  .room-stage{position:relative}
+  .room-media{position:relative;aspect-ratio:16/10;max-height:min(70vh,560px);width:100%;overflow:hidden;border-radius:var(--radius);background:var(--sand)}
+  .room-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s ease,transform 1.2s ease}
+  .room-img.out{opacity:0;transform:scale(1.03)}
+  .room-card{position:absolute;left:24px;bottom:24px;width:min(380px,calc(100% - 48px));background:rgba(251,248,243,.96);backdrop-filter:blur(6px);border-radius:var(--radius);padding:24px 26px;box-shadow:0 24px 48px -28px rgba(0,0,0,.45);transition:opacity .3s ease,transform .3s ease}
+  .room-card.out{opacity:0;transform:translateY(8px)}
+  .room-stat{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+  .room-stat b{font-family:var(--serif);font-weight:500;font-size:2.2rem;line-height:1;color:var(--navy);font-variant-numeric:lining-nums}
+  .room-stat span{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--brass)}
+  .room-card ul{list-style:none;display:grid;gap:8px}
+  .room-card li{position:relative;padding-left:20px;font-size:.93rem;color:var(--ink)}
+  .room-card li::before{content:"";position:absolute;left:0;top:.65em;width:10px;height:2px;background:var(--brass)}
+
+  @media (max-width:1000px){
+    .rooms{grid-template-columns:1fr}
+    .room-index{display:flex;gap:8px;overflow-x:auto;border-left:0;padding-bottom:4px;scrollbar-width:none}
+    .room-index::-webkit-scrollbar{display:none}
+    .room-index button{flex:none;font-family:var(--sans);font-size:.85rem;font-weight:600;padding:.6rem 1rem;border:1px solid var(--line);border-radius:999px;background:#fff}
+    .room-index button::before{display:none}
+    .room-index button[aria-selected="true"]{padding-left:1rem;background:var(--navy);border-color:var(--navy);color:#fff}
+  }
+  @media (max-width:600px){
+    .room-card{position:relative;left:auto;bottom:auto;width:auto;margin:-40px 12px 0;box-shadow:0 16px 32px -20px rgba(0,0,0,.35)}
+    .room-media{aspect-ratio:4/3}
   }
 </style>
 </head>
@@ -652,73 +667,35 @@
 <section class="standard" id="standard">
   <div class="wrap">
     <div class="head reveal">
-      <div><span class="eyebrow">What is Casa Americana?</span><h2>The American standard, <em>in every detail.</em></h2></div>
-      <p class="lead">Every home and residence comes with the space, systems and finishes you would expect in a new home in the United States. As standard.</p>
+      <div><span class="eyebrow">What is Casa Americana?</span><h2>What others call extras, <em>we call standard.</em></h2></div>
+      <p class="lead">Walk through the home room by room and see what comes with every Casa Americana.</p>
     </div>
-    <div class="std-stats reveal">
-      <div><b>4 m</b><span>Ceilings in houses and townhouses</span></div>
-      <div><b>5 × 6 m</b><span>Minimum primary bedroom</span></div>
-      <div><b>5 × 7 m</b><span>Living and dining room</span></div>
-      <div><b>8 × 8 m</b><span>Two-car garage</span></div>
-    </div>
-    <div class="std-grid">
-      <article class="std-card reveal">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 12h9V3M12 12v9"/></svg></div>
-        <h3>Space &amp; layout</h3>
-        <ul>
-          <li>4–5 bedrooms plus study in houses, 3–4 in apartments</li>
-          <li>Primary bedroom of 5 × 6 m with walk-in closet and sitting area</li>
-          <li>Sunken living room, with no columns in the middle</li>
-        </ul>
-      </article>
-      <article class="std-card reveal">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 9h16M8 6h.01M12 6h.01"/><circle cx="12" cy="15" r="3"/></svg></div>
-        <h3>Kitchen &amp; laundry</h3>
-        <ul>
-          <li>Full appliance package with gas stove and range hood</li>
-          <li>Refrigerator with filtered water and ice maker</li>
-          <li>Washer, dryer and a large pantry</li>
-        </ul>
-      </article>
-      <article class="std-card reveal">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg></div>
-        <h3>Bathrooms &amp; water</h3>
-        <ul>
-          <li>Primary bath with jacuzzi tub and separate shower</li>
-          <li>Whole-house water filtration</li>
-          <li>Gas water heater with hot and cold lines</li>
-        </ul>
-      </article>
-      <article class="std-card reveal">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></div>
-        <h3>Construction</h3>
-        <ul>
-          <li>Drywall interiors and metal or wood floor trusses</li>
-          <li>Soundproof windows in bedrooms</li>
-          <li>Clerestory windows and underground utilities</li>
-        </ul>
-      </article>
-      <article class="std-card reveal">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-        <h3>Security &amp; comfort</h3>
-        <ul>
-          <li>Keyless entry at home and in the building</li>
-          <li>Doorbell camera, in-unit tablet and intercom</li>
-          <li>Split A/C system</li>
-        </ul>
-      </article>
-      <article class="std-card reveal">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 6h2M10 12l2-3v6l2-3"/></svg></div>
-        <h3>Building services</h3>
-        <ul>
-          <li>Battery backup and a large cistern</li>
-          <li>Parking for cars, motorcycles and bicycles</li>
-          <li>A storage locker for every unit</li>
-        </ul>
-      </article>
+    <div class="rooms reveal">
+      <div class="room-index" role="tablist" aria-label="Rooms">
+        <button type="button" role="tab" aria-selected="true" data-room="0">Living &amp; dining</button>
+        <button type="button" role="tab" aria-selected="false" data-room="1">Kitchen</button>
+        <button type="button" role="tab" aria-selected="false" data-room="2">Primary suite</button>
+        <button type="button" role="tab" aria-selected="false" data-room="3">Bathrooms</button>
+        <button type="button" role="tab" aria-selected="false" data-room="4">Bedrooms &amp; study</button>
+        <button type="button" role="tab" aria-selected="false" data-room="5">Garage &amp; systems</button>
+        <button type="button" role="tab" aria-selected="false" data-room="6">The building</button>
+      </div>
+      <div class="room-stage">
+        <div class="room-media">
+          <img class="room-img" src="assets/img/1600607687939-ce8a6c25118c.jpg" alt="Living room">
+        </div>
+        <div class="room-card" id="roomCard">
+          <div class="room-stat"><b>5 × 7 m</b><span>Living and dining room</span></div>
+          <ul>
+            <li>Sunken living room with 4 m ceilings</li>
+            <li>No support columns in the middle of the house</li>
+            <li>Clerestory windows bring in natural light</li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="std-more reveal">
-      <button type="button" class="link" id="stdAll">See the complete list
+      <button type="button" class="link" id="stdAll">See everything included
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     </div>
   </div>
@@ -1768,6 +1745,44 @@
    "Pick a residence on the building to see its size, view and price.": "Elige una residencia en el edificio para ver su área, vista y precio.",
    "Residences by floor": "Residencias por piso"
   });
+  Object.assign(ES, {
+   "What others call extras,": "Lo que otros llaman extras,",
+   "we call standard.": "para nosotros es estándar.",
+   "Walk through the home room by room and see what comes with every Casa Americana.": "Recorre la casa ambiente por ambiente y descubre lo que incluye cada Casa Americana.",
+   "Rooms": "Ambientes",
+   "Living & dining": "Sala y comedor",
+   "Primary suite": "Suite principal",
+   "Bathrooms": "Baños",
+   "Bedrooms & study": "Dormitorios y estudio",
+   "Garage & systems": "Cochera y sistemas",
+   "The building": "El edificio",
+   "Living room": "Sala",
+   "Sunken living room with 4 m ceilings": "Sala hundida con techos de 4 m",
+   "Clerestory windows bring in natural light": "Ventanas altas que llenan de luz natural",
+   "Appliances included": "Electrodomésticos incluidos",
+   "Gas stove, extra electric oven and range hood": "Cocina a gas, horno eléctrico adicional y campana",
+   "Large pantry and under-cabinet lighting": "Despensa amplia e iluminación bajo gabinetes",
+   "Primary bedroom": "Dormitorio principal",
+   "Minimum size": "Tamaño mínimo",
+   "Walk-in closet and sitting area": "Walk-in closet y zona de estar",
+   "Soundproof windows": "Ventanas acústicas",
+   "Wood floors or carpet": "Pisos de madera o alfombra",
+   "Bathroom with freestanding tub": "Baño con tina independiente",
+   "In the primary bath": "En el baño principal",
+   "Full jacuzzi tub and separate shower": "Tina jacuzzi y ducha separada",
+   "Whole-house water filtration and gas water heater": "Filtración de agua en toda la casa y terma a gas",
+   "Bedroom": "Dormitorio",
+   "Smallest bedroom": "Dormitorio más pequeño",
+   "A walk-in closet in every bedroom": "Walk-in closet en cada dormitorio",
+   "A study in every home": "Un estudio en cada vivienda",
+   "Linen closets and pocket doors": "Closets de blancos y puertas corredizas empotradas",
+   "A basement in every house": "Sótano en cada casa",
+   "Keyless entry, doorbell camera and intercom tablet": "Acceso sin llave, cámara en el timbre y tablet intercomunicador",
+   "Split A/C and underground utilities": "Aire acondicionado split e instalaciones subterráneas",
+   "Ceilings in every condo": "Techos en cada condominio",
+   "Keyless building entrance and a storage locker per unit": "Ingreso sin llave al edificio y un depósito por unidad",
+   "See everything included": "Ver todo lo incluido"
+  });
   const ES_INV = Object.fromEntries(Object.entries(ES).map(([en, es]) => [es, en]));
   let lang = 'en';
   try { lang = localStorage.getItem('ca-lang') === 'es' ? 'es' : 'en'; } catch (e) {}
@@ -1809,7 +1824,7 @@
     langSwitch.dataset.lang = l;
     langSwitch.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.l === l));
     applyLang();
-    renderUnits(); updateCalc(); updateFacade();
+    renderUnits(); updateCalc(); updateFacade(); renderRoom();
     if (modal.open && current) renderPlan();
   };
   langSwitch.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { if (b.dataset.l !== lang) setLang(b.dataset.l); }));
@@ -1904,6 +1919,45 @@
       `I'm interested in residence ${u.unit} at The Madison Residences (${u.beds} bedrooms + study, ${u.m2} m², ${fmt(u.price)}).`,
       `Me interesa la residencia ${u.unit} de The Madison Residences (${u.beds} dormitorios + estudio, ${u.m2} m², ${fmt(u.price)}).`)));
   };
+
+  // Recorrido por ambientes del estándar Casa Americana
+  const ROOMS = [
+    {img: '1600607687939-ce8a6c25118c', alt: 'Living room', stat: '5 × 7 m', label: 'Living and dining room',
+      items: ['Sunken living room with 4 m ceilings', 'No support columns in the middle of the house', 'Clerestory windows bring in natural light']},
+    {img: '1556912173-3bb406ef7e77', alt: 'American-style kitchen with premium finishes', stat: '8+', label: 'Appliances included',
+      items: ['Gas stove, extra electric oven and range hood', 'Refrigerator with filtered water and ice maker', 'Large pantry and under-cabinet lighting']},
+    {img: '1512918728675-ed5a9ecdebfd', alt: 'Primary bedroom', stat: '5 × 6 m', label: 'Minimum size',
+      items: ['Walk-in closet and sitting area', 'Soundproof windows', 'Wood floors or carpet']},
+    {img: '1600566752355-35792bedcfea', alt: 'Bathroom with freestanding tub', stat: 'Jacuzzi', label: 'In the primary bath',
+      items: ['Full jacuzzi tub and separate shower', 'Vents and fans in every bathroom', 'Whole-house water filtration and gas water heater']},
+    {img: '1559599238-308793637427', alt: 'Bedroom', stat: '3.5 × 3.5 m', label: 'Smallest bedroom',
+      items: ['A walk-in closet in every bedroom', 'A study in every home', 'Linen closets and pocket doors']},
+    {img: '1570129477492-45c003edd2be', alt: 'Premium American single-family home with wraparound porch', stat: '8 × 8 m', label: 'Two-car garage',
+      items: ['A basement in every house', 'Keyless entry, doorbell camera and intercom tablet', 'Split A/C and underground utilities']},
+    {img: '1527030280862-64139fba04ca', alt: 'The Madison Residences, luxury building with landscaped terraces', stat: '3.2 m', label: 'Ceilings in every condo',
+      items: ['Keyless building entrance and a storage locker per unit', 'Battery backup and a large cistern', 'Parking for cars, motorcycles and bicycles']}
+  ];
+  let roomIdx = 0;
+  const roomImg = document.querySelector('.room-img'), roomCard = $('roomCard');
+  const renderRoom = () => {
+    const r = ROOMS[roomIdx];
+    roomCard.innerHTML = `<div class="room-stat"><b>${tr(r.stat)}</b><span>${tr(r.label)}</span></div>` +
+      `<ul>${r.items.map(i => `<li>${tr(i)}</li>`).join('')}</ul>`;
+  };
+  const showRoom = i => {
+    if (i === roomIdx) return;
+    roomIdx = i;
+    document.querySelectorAll('[data-room]').forEach(b => b.setAttribute('aria-selected', +b.dataset.room === i));
+    roomImg.classList.add('out'); roomCard.classList.add('out');
+    setTimeout(() => {
+      const r = ROOMS[i];
+      roomImg.src = `assets/img/${r.img}.jpg`; roomImg.alt = tr(r.alt);
+      renderRoom();
+      roomImg.classList.remove('out'); roomCard.classList.remove('out');
+    }, 280);
+  };
+  document.querySelectorAll('[data-room]').forEach(b => b.addEventListener('click', () => showRoom(+b.dataset.room)));
+  ROOMS.forEach(r => { const p = new Image(); p.src = `assets/img/${r.img}.jpg`; });
 
   // Lista completa del estándar
   const stdDialog = $('stdDialog');
