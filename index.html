@@ -317,9 +317,37 @@
   }
 
   /* IDIOMA */
-  .lang{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid currentColor;color:inherit;border-radius:999px;padding:.45rem .8rem;font:600 .75rem/1 var(--sans);letter-spacing:.12em;cursor:pointer;opacity:.85;transition:opacity .2s ease,background .2s ease}
-  .lang:hover{opacity:1;background:rgba(176,141,87,.15)}
+  .lang{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;flex:none;border:1px solid currentColor;border-radius:999px;padding:3px;opacity:.9}
+  .lang::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--brass);transition:transform .3s ease}
+  .lang[data-lang="es"]::before{transform:translateX(100%)}
+  .lang button{position:relative;width:2.4rem;padding:.4rem 0;background:none;border:0;color:inherit;font:700 .7rem/1 var(--sans);letter-spacing:.1em;cursor:pointer;opacity:.75;transition:opacity .2s ease,color .2s ease}
+  .lang button:hover{opacity:1}
+  .lang button[aria-pressed="true"]{color:#fff;opacity:1}
+  .nav ul a{display:inline-block;text-align:center}
   .nav-actions{display:flex;align-items:center;gap:14px}
+  .nav-actions .btn{justify-content:center}
+  .brand-name{white-space:nowrap}
+  @media (max-width:1240px) and (min-width:1001px){
+    .brand svg{width:34px;height:34px}
+    .brand-name{font-size:1.1rem;letter-spacing:.1em}
+    .nav ul{gap:14px}
+    .nav ul a{font-size:.8rem}
+    .nav-actions{gap:10px}
+    .nav-actions .btn{padding:.7rem .9rem;font-size:.78rem}
+  }
+  @media (max-width:600px){
+    .nav .wrap{gap:10px}
+    .brand{gap:8px;min-width:0}
+    .brand svg{width:32px;height:32px}
+    .nav .brand-name{font-size:.98rem;letter-spacing:.08em}
+    .nav .brand-tag{font-size:.5rem;letter-spacing:.24em}
+    .nav-actions{gap:10px}
+    .lang button{width:2rem;padding:.38rem 0;font-size:.66rem}
+  }
+  @media (max-width:360px){
+    .nav .brand-name{font-size:.84rem;letter-spacing:.05em}
+    .nav .brand-tag{letter-spacing:.16em}
+  }
 
   /* POR QUÉ CAJAMARCA */
   .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -457,7 +485,10 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="lang" id="langBtn" type="button" aria-label="Cambiar a español">ES</button>
+      <div class="lang" id="langSwitch" data-lang="en" role="group" aria-label="Language / Idioma">
+        <button type="button" data-l="en" aria-pressed="true" lang="en">EN</button>
+        <button type="button" data-l="es" aria-pressed="false" lang="es">ES</button>
+      </div>
       <a href="#contact" class="btn btn-primary">Book a visit</a>
       <button class="burger" aria-label="Open menu" onclick="document.getElementById('nav').classList.toggle('open')">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
@@ -1350,18 +1381,33 @@
       const v = el.getAttribute(a); if (v) { const out = tr(v); if (out !== v) el.setAttribute(a, out); }
     }));
   };
-  const langBtn = document.getElementById('langBtn');
+  const langSwitch = document.getElementById('langSwitch');
+  // Reserva en el menú el ancho del texto más largo de ambos idiomas para que el header no se mueva
+  const lockNav = () => document.querySelectorAll('.nav ul a, .nav-actions .btn').forEach(el => {
+    el.style.minWidth = '';
+    const cur = el.textContent.trim(), en = ES_INV[cur] || cur, es = ES[en] || en;
+    const widths = [en, es].map(t => {
+      const c = el.cloneNode(false);
+      c.textContent = t;
+      c.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;min-width:0';
+      el.parentElement.append(c);
+      const w = c.getBoundingClientRect().width; c.remove(); return w;
+    });
+    el.style.minWidth = Math.ceil(Math.max(...widths)) + 'px';
+  });
+  document.fonts.ready.then(lockNav);
+  let lockTimer; addEventListener('resize', () => { clearTimeout(lockTimer); lockTimer = setTimeout(lockNav, 150); });
   const setLang = l => {
     lang = l;
     try { localStorage.setItem('ca-lang', l); } catch (e) {}
     document.documentElement.lang = l;
-    langBtn.textContent = l === 'es' ? 'EN' : 'ES';
-    langBtn.setAttribute('aria-label', l === 'es' ? 'Switch to English' : 'Cambiar a español');
+    langSwitch.dataset.lang = l;
+    langSwitch.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.l === l));
     applyLang();
     renderUnits(); updateCalc(); updateFacade();
     if (modal.open && current) renderPlan();
   };
-  langBtn.addEventListener('click', () => setLang(lang === 'es' ? 'en' : 'es'));
+  langSwitch.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { if (b.dataset.l !== lang) setLang(b.dataset.l); }));
 
   const goContact = (interest, message) => {
     if (interest) $('s').value = interest;
