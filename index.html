@@ -381,30 +381,6 @@
   .check{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-size:.92rem;color:var(--ink);text-transform:none;letter-spacing:0;font-weight:500;margin:0}
   .check input{width:18px;height:18px;accent-color:var(--brass);padding:0}
 
-  /* DISPONIBILIDAD */
-  .avail{background:var(--cream)}
-  .avail-tools{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-bottom:20px}
-  .avail-count{margin-left:auto;font-size:.85rem;color:var(--muted)}
-  .table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
-  .units{width:100%;border-collapse:collapse;min-width:640px;font-size:.92rem;font-variant-numeric:tabular-nums}
-  .units th{text-align:left;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:14px 18px;border-bottom:1px solid var(--line);white-space:nowrap}
-  .units th button{background:none;border:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:6px}
-  .units th button:hover,.units th button.sorted{color:var(--navy)}
-  .units th button::after{content:"↕";opacity:.35;font-size:.9em}
-  .units th button.sorted.asc::after{content:"↑";opacity:1}
-  .units th button.sorted.desc::after{content:"↓";opacity:1}
-  .units td{padding:14px 18px;border-bottom:1px solid var(--line);white-space:nowrap}
-  .units tbody tr{cursor:pointer;transition:background .2s ease}
-  .units tbody tr:hover{background:var(--paper)}
-  .units tbody tr:last-child td{border-bottom:0}
-  .units td:first-child{font-weight:700;color:var(--navy)}
-  .units .price-cell{font-variant-numeric:lining-nums tabular-nums;font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--navy)}
-  .chip{display:inline-block;padding:4px 10px;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.06em}
-  .chip.available{background:#e6ece2;color:#4b5e44}
-  .chip.reserved{background:#f3e8d6;color:#8a6a35}
-  .chip.sold{background:#ececec;color:#7a7a7a}
-  .units tr.is-sold{cursor:default;color:#9a9a9a}
-  .units tr.is-sold td:first-child,.units tr.is-sold .price-cell{color:#9a9a9a}
 
   /* ESTUDIO DE FACHADA */
   .studio-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(28px,4vw,56px);align-items:center}
@@ -463,17 +439,6 @@
   .std-stats > div + div{border-left:1px solid var(--line)}
   .std-stats b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,1.5rem + 1.2vw,2.6rem);color:var(--navy);line-height:1;font-variant-numeric:lining-nums}
   .std-stats span{display:block;margin-top:.5rem;font-size:.85rem;color:var(--muted)}
-  .std-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-  .std-tabs button{background:#fff;border:1px solid var(--line);border-radius:999px;padding:.6rem 1.1rem;font:600 .82rem/1 var(--sans);color:var(--muted);cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
-  .std-tabs button:hover{color:var(--navy);border-color:rgba(30,42,56,.3)}
-  .std-tabs button[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
-  .std-tabs button .n{margin-left:6px;opacity:.6;font-weight:500}
-  .std-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
-  .std-list li{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px 14px 44px;font-size:.93rem;color:var(--ink);transition:border-color .2s ease,transform .2s ease}
-  .std-list li:hover{border-color:var(--brass);transform:translateY(-2px)}
-  .std-list li::before{content:"";position:absolute;left:16px;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;background:var(--brass) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/10px no-repeat}
-  .std-list.fade{animation:stdIn .35s ease}
-  @keyframes stdIn{from{opacity:0;transform:translateY(6px)}}
 
   /* ESTIMADOR DE RENTA */
   .calc-range{color:rgba(255,255,255,.7);font-size:.9rem;margin-top:-6px}
@@ -496,6 +461,74 @@
     .std-stats > div:nth-child(3){border-left:0}
     .std-stats > div:nth-child(n+3){border-top:1px solid var(--line)}
     .buy-steps{grid-template-columns:1fr}
+  }
+
+  /* ESTÁNDAR: PILARES */
+  .std-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,3.5vw,48px) clamp(24px,3vw,40px)}
+  .std-card .ic{width:48px;height:48px;border-radius:50%;background:var(--cream);display:grid;place-items:center;color:var(--brass);transition:background .25s ease,color .25s ease}
+  .std-card:hover .ic{background:var(--brass);color:#fff}
+  .std-card h3{font-size:1.5rem;margin:.9rem 0 .7rem}
+  .std-card ul{list-style:none;display:grid;gap:8px}
+  .std-card li{position:relative;padding-left:20px;font-size:.93rem;color:var(--muted)}
+  .std-card li::before{content:"";position:absolute;left:0;top:.65em;width:10px;height:2px;background:var(--brass)}
+  .std-more{margin-top:clamp(28px,4vw,44px)}
+  .std-more .link{background:none;border:0;border-bottom:2px solid var(--brass);cursor:pointer;font-family:var(--sans)}
+  dialog.std-dialog{width:min(1000px,calc(100vw - 32px))}
+  .std-dialog-body{padding:clamp(28px,4vw,48px)}
+  .std-dialog-body h3{font-size:clamp(1.9rem,1.5rem + 1vw,2.6rem);margin:.4rem 0 1.6rem}
+  .std-cols{columns:3 240px;column-gap:40px}
+  .std-cols > div{break-inside:avoid;margin-bottom:28px}
+  .std-cols h4{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);font-weight:700;padding-bottom:8px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+  .std-cols ul{list-style:none}
+  .std-cols li{font-size:.9rem;color:var(--ink);padding:6px 0;border-bottom:1px solid var(--line)}
+
+  /* DISPONIBILIDAD: EDIFICIO */
+  .avail-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,4vw,56px);align-items:start}
+  .tower{display:grid;gap:6px;padding:18px 18px 0;background:#fff;border:1px solid var(--line);border-bottom:0;border-radius:var(--radius) var(--radius) 0 0}
+  .tower-roof{display:flex;justify-content:center;align-items:center;gap:8px;height:36px;border-radius:2px;background:var(--navy);color:var(--brass-2);font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+  .tower-row{display:grid;grid-template-columns:44px repeat(4,1fr);gap:6px;align-items:center}
+  .tower-row > span{font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--muted);text-align:right;padding-right:6px}
+  .cell{height:46px;border-radius:2px;border:1px solid rgba(30,42,56,.25);background:var(--paper);color:var(--navy);font:700 .78rem/1 var(--sans);letter-spacing:.04em;cursor:pointer;transition:background .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease}
+  .cell:hover{transform:translateY(-2px);box-shadow:0 8px 16px -10px rgba(30,42,56,.5)}
+  .cell.reserved{background:repeating-linear-gradient(135deg,#f3e8d6 0 6px,#ead9bd 6px 12px);border-color:#d9c29a;color:#8a6a35}
+  .cell.sold{background:#eceae6;border-color:transparent;color:#b3afa8;cursor:default}
+  .cell.sold:hover{transform:none;box-shadow:none}
+  .cell.on{background:var(--navy);border-color:var(--navy);color:#fff}
+  .tower-ground{height:30px;margin:0 -18px;border-top:4px solid var(--navy);background:var(--sand);display:grid;place-items:center;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .tower-legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px;font-size:.82rem;color:var(--muted)}
+  .tower-legend span{display:inline-flex;align-items:center;gap:8px}
+  .dot{width:12px;height:12px;border-radius:2px;display:inline-block;border:1px solid rgba(30,42,56,.25);background:var(--paper)}
+  .dot.reserved{background:#ead9bd;border-color:#d9c29a}
+  .dot.sold{background:#eceae6;border-color:transparent}
+  .unit-card{position:sticky;top:96px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:clamp(24px,3vw,36px);display:grid;gap:14px}
+  .unit-card .eyebrow{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .unit-card h3{font-size:clamp(1.8rem,1.4rem + 1vw,2.4rem)}
+  .unit-specs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .unit-specs > div{padding:14px 0}
+  .unit-specs > div + div{padding-left:14px;border-left:1px solid var(--line)}
+  .unit-specs dt{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .unit-specs dd{margin-top:4px;color:var(--navy);font-weight:600}
+  .unit-price small{display:block;font-size:.72rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+  .unit-price strong{font-family:var(--serif);font-size:2.2rem;font-weight:600;color:var(--navy);font-variant-numeric:lining-nums}
+  .unit-card .btn{justify-self:start}
+  .chip{display:inline-block;padding:4px 10px;border-radius:999px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:none}
+  .chip.available{background:#e6ece2;color:#4b5e44}
+  .chip.reserved{background:#f3e8d6;color:#8a6a35}
+  .chip.sold{background:#ececec;color:#7a7a7a}
+
+  @media (max-width:1000px){
+    .std-grid{grid-template-columns:1fr 1fr}
+    .avail-grid{grid-template-columns:1fr}
+    .unit-card{position:static}
+  }
+  @media (max-width:600px){
+    .std-grid{grid-template-columns:1fr}
+    .tower{padding:12px 12px 0}
+    .tower-ground{margin:0 -12px}
+    .tower-row{grid-template-columns:34px repeat(4,1fr);gap:5px}
+    .cell{height:42px;font-size:.72rem}
+    .unit-specs{grid-template-columns:1fr 1fr}
+    .unit-specs > div:nth-child(3){grid-column:1/-1;padding-left:0;border-left:0;border-top:1px solid var(--line)}
   }
 </style>
 </head>
@@ -628,80 +661,160 @@
       <div><b>5 × 7 m</b><span>Living and dining room</span></div>
       <div><b>8 × 8 m</b><span>Two-car garage</span></div>
     </div>
-    <div class="std-tabs reveal" role="tablist" aria-label="Feature categories">
-      <button type="button" role="tab" aria-selected="true" data-std="space">Space &amp; layout</button>
-      <button type="button" role="tab" aria-selected="false" data-std="kitchen">Kitchen &amp; laundry</button>
-      <button type="button" role="tab" aria-selected="false" data-std="bath">Bathrooms &amp; water</button>
-      <button type="button" role="tab" aria-selected="false" data-std="build">Construction</button>
-      <button type="button" role="tab" aria-selected="false" data-std="tech">Security &amp; comfort</button>
-      <button type="button" role="tab" aria-selected="false" data-std="building">Building services</button>
+    <div class="std-grid">
+      <article class="std-card reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 12h9V3M12 12v9"/></svg></div>
+        <h3>Space &amp; layout</h3>
+        <ul>
+          <li>4–5 bedrooms plus study in houses, 3–4 in apartments</li>
+          <li>Primary bedroom of 5 × 6 m with walk-in closet and sitting area</li>
+          <li>Sunken living room, with no columns in the middle</li>
+        </ul>
+      </article>
+      <article class="std-card reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 9h16M8 6h.01M12 6h.01"/><circle cx="12" cy="15" r="3"/></svg></div>
+        <h3>Kitchen &amp; laundry</h3>
+        <ul>
+          <li>Full appliance package with gas stove and range hood</li>
+          <li>Refrigerator with filtered water and ice maker</li>
+          <li>Washer, dryer and a large pantry</li>
+        </ul>
+      </article>
+      <article class="std-card reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg></div>
+        <h3>Bathrooms &amp; water</h3>
+        <ul>
+          <li>Primary bath with jacuzzi tub and separate shower</li>
+          <li>Whole-house water filtration</li>
+          <li>Gas water heater with hot and cold lines</li>
+        </ul>
+      </article>
+      <article class="std-card reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></div>
+        <h3>Construction</h3>
+        <ul>
+          <li>Drywall interiors and metal or wood floor trusses</li>
+          <li>Soundproof windows in bedrooms</li>
+          <li>Clerestory windows and underground utilities</li>
+        </ul>
+      </article>
+      <article class="std-card reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h3>Security &amp; comfort</h3>
+        <ul>
+          <li>Keyless entry at home and in the building</li>
+          <li>Doorbell camera, in-unit tablet and intercom</li>
+          <li>Split A/C system</li>
+        </ul>
+      </article>
+      <article class="std-card reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 6h2M10 12l2-3v6l2-3"/></svg></div>
+        <h3>Building services</h3>
+        <ul>
+          <li>Battery backup and a large cistern</li>
+          <li>Parking for cars, motorcycles and bicycles</li>
+          <li>A storage locker for every unit</li>
+        </ul>
+      </article>
     </div>
-    <div class="std-panels reveal">
-      <ul class="std-list" data-std-panel="space">
-        <li>4 to 5 bedrooms plus study in every house</li>
-        <li>3 to 4 bedrooms plus study in every apartment</li>
-        <li>Primary bedroom of at least 5 × 6 m with walk-in closet and sitting area</li>
-        <li>Smallest bedroom 3.5 × 3.5 m</li>
-        <li>Walk-in closets in every bedroom, built outside the room</li>
-        <li>Living and dining room of 5 × 7 m</li>
-        <li>Sunken living room in houses and townhouses</li>
-        <li>4 m ceilings in houses and townhouses</li>
-        <li>3.2 m ceilings in condos</li>
-        <li>No support columns in the middle of the house</li>
-        <li>Houses with basements</li>
-        <li>Two-car garage of 8 × 8 m</li>
-        <li>Linen closets</li>
-        <li>Pocket doors</li>
-        <li>Large pantry</li>
-        <li>Wood floors or carpet in bedrooms and on the second floor</li>
-      </ul>
-      <ul class="std-list" data-std-panel="kitchen" hidden>
-        <li>Full appliance package with every house</li>
-        <li>Gas stove</li>
-        <li>Refrigerator with filtered water and ice maker</li>
-        <li>Range hood</li>
-        <li>Garbage disposal</li>
-        <li>Microwave</li>
-        <li>Dishwasher</li>
-        <li>Extra electric oven in houses and townhouses</li>
-        <li>Under-cabinet lighting</li>
-        <li>Washer and dryer</li>
-        <li>Laundry chutes in townhouses with basements</li>
-      </ul>
-      <ul class="std-list" data-std-panel="bath" hidden>
-        <li>Private primary bath with full jacuzzi tub and separate shower</li>
-        <li>Vents and fans in every bathroom</li>
-        <li>Gas water heater, in the garage for houses</li>
-        <li>Hot and cold water lines throughout</li>
-        <li>Whole-house water filtration system</li>
-        <li>Thresholds at bathrooms and the front door</li>
-      </ul>
-      <ul class="std-list" data-std-panel="build" hidden>
-        <li>Drywall interior walls</li>
-        <li>Wood or metal floor trusses above the main floor</li>
-        <li>Underground utilities</li>
-        <li>Clerestory windows for natural light</li>
-        <li>Soundproof windows in bedrooms</li>
-        <li>Balconies</li>
-      </ul>
-      <ul class="std-list" data-std-panel="tech" hidden>
-        <li>Keyless front door entry</li>
-        <li>Camera at every doorbell</li>
-        <li>A tablet in every unit to see who is at the door</li>
-        <li>Intercom to talk to visitors outside</li>
-        <li>Split A/C system</li>
-      </ul>
-      <ul class="std-list" data-std-panel="building" hidden>
-        <li>Keyless building entrance</li>
-        <li>Battery backup system for the building</li>
-        <li>Large cistern below the building</li>
-        <li>Trash chutes in condo stairwells</li>
-        <li>Parking for cars, motorcycles and bicycles</li>
-        <li>Storage locker for every unit</li>
-      </ul>
+    <div class="std-more reveal">
+      <button type="button" class="link" id="stdAll">See the complete list
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     </div>
   </div>
 </section>
+
+<dialog class="modal std-dialog" id="stdDialog" aria-labelledby="stdDialogTitle">
+  <button class="modal-close" data-close aria-label="Close">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <div class="std-dialog-body">
+    <span class="eyebrow">The Casa Americana standard</span>
+    <h3 id="stdDialogTitle">Everything included</h3>
+    <div class="std-cols">
+      <div>
+        <h4>Space &amp; layout</h4>
+        <ul>
+          <li>4 to 5 bedrooms plus study in every house</li>
+          <li>3 to 4 bedrooms plus study in every apartment</li>
+          <li>Primary bedroom of at least 5 × 6 m with walk-in closet and sitting area</li>
+          <li>Smallest bedroom 3.5 × 3.5 m</li>
+          <li>Walk-in closets in every bedroom, built outside the room</li>
+          <li>Living and dining room of 5 × 7 m</li>
+          <li>Sunken living room in houses and townhouses</li>
+          <li>4 m ceilings in houses and townhouses</li>
+          <li>3.2 m ceilings in condos</li>
+          <li>No support columns in the middle of the house</li>
+          <li>Houses with basements</li>
+          <li>Two-car garage of 8 × 8 m</li>
+          <li>Linen closets</li>
+          <li>Pocket doors</li>
+          <li>Large pantry</li>
+          <li>Wood floors or carpet in bedrooms and on the second floor</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kitchen &amp; laundry</h4>
+        <ul>
+          <li>Full appliance package with every house</li>
+          <li>Gas stove</li>
+          <li>Refrigerator with filtered water and ice maker</li>
+          <li>Range hood</li>
+          <li>Garbage disposal</li>
+          <li>Microwave</li>
+          <li>Dishwasher</li>
+          <li>Extra electric oven in houses and townhouses</li>
+          <li>Under-cabinet lighting</li>
+          <li>Washer and dryer</li>
+          <li>Laundry chutes in townhouses with basements</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Bathrooms &amp; water</h4>
+        <ul>
+          <li>Private primary bath with full jacuzzi tub and separate shower</li>
+          <li>Vents and fans in every bathroom</li>
+          <li>Gas water heater, in the garage for houses</li>
+          <li>Hot and cold water lines throughout</li>
+          <li>Whole-house water filtration system</li>
+          <li>Thresholds at bathrooms and the front door</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Construction</h4>
+        <ul>
+          <li>Drywall interior walls</li>
+          <li>Wood or metal floor trusses above the main floor</li>
+          <li>Underground utilities</li>
+          <li>Clerestory windows for natural light</li>
+          <li>Soundproof windows in bedrooms</li>
+          <li>Balconies</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Security &amp; comfort</h4>
+        <ul>
+          <li>Keyless front door entry</li>
+          <li>Camera at every doorbell</li>
+          <li>A tablet in every unit to see who is at the door</li>
+          <li>Intercom to talk to visitors outside</li>
+          <li>Split A/C system</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Building services</h4>
+        <ul>
+          <li>Keyless building entrance</li>
+          <li>Battery backup system for the building</li>
+          <li>Large cistern below the building</li>
+          <li>Trash chutes in condo stairwells</li>
+          <li>Parking for cars, motorcycles and bicycles</li>
+          <li>Storage locker for every unit</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</dialog>
 
 <section class="why" id="cajamarca">
   <div class="wrap">
@@ -778,34 +891,20 @@
   <div class="wrap">
     <div class="head reveal">
       <div><span class="eyebrow">The Madison Residences</span><h2>Choose <em>your residence.</em></h2></div>
-      <p class="lead">Filter by bedrooms and status, sort by price or size, and tap a residence to ask about it.</p>
+      <p class="lead">Pick a residence on the building to see its size, view and price.</p>
     </div>
-    <div class="avail-tools reveal">
-      <div class="seg" role="group" aria-label="Bedrooms">
-        <button class="on" data-beds="all">All</button>
-        <button data-beds="3">3 beds</button>
-        <button data-beds="4">4 beds</button>
+    <div class="avail-grid reveal">
+      <div class="tower-wrap">
+        <div class="tower" id="tower" role="group" aria-label="Residences by floor"></div>
+        <div class="tower-legend">
+          <span><i class="dot available"></i>Available</span>
+          <span><i class="dot reserved"></i>Reserved</span>
+          <span><i class="dot sold"></i>Sold</span>
+        </div>
       </div>
-      <label class="check"><input type="checkbox" id="onlyAvail"> <span>Available only</span></label>
-      <span class="avail-count" id="availCount"></span>
+      <aside class="unit-card" id="unitCard" aria-live="polite"></aside>
     </div>
-    <div class="table-wrap reveal">
-      <table class="units">
-        <thead>
-          <tr>
-            <th scope="col"><button data-sort="unit">Residence</button></th>
-            <th scope="col"><button data-sort="floor">Floor</button></th>
-            <th scope="col"><button data-sort="beds">Bedrooms</button></th>
-            <th scope="col"><button data-sort="m2">Size</button></th>
-            <th scope="col">View</th>
-            <th scope="col"><button data-sort="price">Price</button></th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
-        <tbody id="unitRows"></tbody>
-      </table>
-    </div>
-    <p class="note">Sample availability for this preview. Prices and status will be updated with the official price list. Every residence includes a study. Reserve with S/ 5,000; full payment within 30 days.</p>
+    <p class="note">Sample availability for this preview. Prices and status will be updated with the official price list.</p>
   </div>
 </section>
 
@@ -1648,6 +1747,27 @@
    "Two-car garage of 8 × 8 m, basement and fire pit": "Cochera para 2 autos de 8 × 8 m, sótano y fogatero",
    "US$ 300k – 400k": "US$ 300k – 400k"
   });
+  Object.assign(ES, {
+   "4–5 bedrooms plus study in houses, 3–4 in apartments": "4–5 dormitorios más estudio en casas, 3–4 en departamentos",
+   "Primary bedroom of 5 × 6 m with walk-in closet and sitting area": "Dormitorio principal de 5 × 6 m con walk-in closet y zona de estar",
+   "Sunken living room, with no columns in the middle": "Sala hundida, sin columnas en el medio",
+   "Full appliance package with gas stove and range hood": "Equipamiento completo con cocina a gas y campana",
+   "Washer, dryer and a large pantry": "Lavadora, secadora y una despensa amplia",
+   "Primary bath with jacuzzi tub and separate shower": "Baño principal con jacuzzi y ducha separada",
+   "Whole-house water filtration": "Filtración de agua en toda la vivienda",
+   "Gas water heater with hot and cold lines": "Terma a gas con agua fría y caliente",
+   "Drywall interiors and metal or wood floor trusses": "Interiores de drywall y entrepisos con viguetas de metal o madera",
+   "Clerestory windows and underground utilities": "Ventanas altas e instalaciones subterráneas",
+   "Keyless entry at home and in the building": "Acceso sin llave en la vivienda y el edificio",
+   "Doorbell camera, in-unit tablet and intercom": "Cámara en el timbre, tablet en la unidad e intercomunicador",
+   "Battery backup and a large cistern": "Baterías de respaldo y una gran cisterna",
+   "A storage locker for every unit": "Un depósito para cada unidad",
+   "See the complete list": "Ver la lista completa",
+   "The Casa Americana standard": "El estándar Casa Americana",
+   "Everything included": "Todo incluido",
+   "Pick a residence on the building to see its size, view and price.": "Elige una residencia en el edificio para ver su área, vista y precio.",
+   "Residences by floor": "Residencias por piso"
+  });
   const ES_INV = Object.fromEntries(Object.entries(ES).map(([en, es]) => [es, en]));
   let lang = 'en';
   try { lang = localStorage.getItem('ca-lang') === 'es' ? 'es' : 'en'; } catch (e) {}
@@ -1755,35 +1875,39 @@
     const price = Math.round(m2 * (fl < 6 ? 1830 : 2100) * (1 + 0.02 * (fl - 1)) / 1000) * 1000;
     UNITS.push({unit, floor: fl, beds, m2, view, price, status: SOLD.includes(unit) ? 'Sold' : RESERVED.includes(unit) ? 'Reserved' : 'Available'});
   });
-  let beds = 'all', sortKey = 'floor', sortDir = 1;
+  // Edificio interactivo: pisos de arriba hacia abajo, una celda por residencia
+  let selUnit = UNITS.find(u => u.status === 'Available').unit;
   const renderUnits = () => {
-    const only = $('onlyAvail').checked;
-    const rows = UNITS.filter(u => (beds === 'all' || u.beds == beds) && (!only || u.status === 'Available'))
-      .sort((a, b) => (a[sortKey] > b[sortKey] ? 1 : a[sortKey] < b[sortKey] ? -1 : 0) * sortDir || (a.unit > b.unit ? 1 : -1));
-    $('unitRows').innerHTML = rows.map(u => `<tr class="${u.status === 'Sold' ? 'is-sold' : ''}" data-unit="${u.unit}" tabindex="${u.status === 'Sold' ? -1 : 0}">
-      <td>${u.unit}</td><td>${u.floor === 6 ? L('Penthouse', 'Penthouse') : u.floor}</td><td>${u.beds}</td><td>${u.m2} m²</td>
-      <td>${tr(u.view)}</td><td class="price-cell">${u.status === 'Sold' ? '—' : fmt(u.price)}</td>
-      <td><span class="chip ${u.status.toLowerCase()}">${tr(u.status)}</span></td></tr>`).join('');
-    const avail = UNITS.filter(u => u.status === 'Available').length;
-    $('availCount').textContent = L(`Showing ${rows.length} of ${UNITS.length} · ${avail} available`, `Mostrando ${rows.length} de ${UNITS.length} · ${avail} disponibles`);
-    $('unitRows').querySelectorAll('tr:not(.is-sold)').forEach(tr_ => {
-      const u = UNITS.find(x => x.unit === tr_.dataset.unit);
-      const go = () => goContact('Luxury residence in an American Style Building', L(
-        `I'm interested in residence ${u.unit} at The Madison Residences (${u.beds} bedrooms, ${u.m2} m², ${fmt(u.price)}).`,
-        `Me interesa la residencia ${u.unit} de The Madison Residences (${u.beds} dormitorios, ${u.m2} m², ${fmt(u.price)}).`));
-      tr_.addEventListener('click', go);
-      tr_.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
-    });
+    const floors = [6, 5, 4, 3, 2, 1];
+    $('tower').innerHTML = `<div class="tower-roof">${L('Rooftop · amenities', 'Rooftop · amenities')}</div>` +
+      floors.map(fl => `<div class="tower-row"><span>${fl === 6 ? 'PH' : fl}</span>` +
+        UNITS.filter(u => u.floor === fl).map(u =>
+          `<button type="button" class="cell ${u.status.toLowerCase()} ${u.unit === selUnit ? 'on' : ''}" data-unit="${u.unit}" aria-pressed="${u.unit === selUnit}" ${u.status === 'Sold' ? 'aria-disabled="true"' : ''} aria-label="${u.unit} · ${tr(u.status)}">${u.unit}</button>`).join('') +
+        '</div>').join('') +
+      `<div class="tower-ground">${L('Lobby · parking', 'Lobby · estacionamiento')}</div>`;
+    $('tower').querySelectorAll('.cell:not(.sold)').forEach(b => b.addEventListener('click', () => { selUnit = b.dataset.unit; renderUnits(); }));
+    const u = UNITS.find(x => x.unit === selUnit);
+    const avail = UNITS.filter(x => x.status === 'Available').length;
+    $('unitCard').innerHTML = `
+      <span class="eyebrow">${L('Residence', 'Residencia')} ${u.unit} · ${u.floor === 6 ? 'Penthouse' : L('Floor ', 'Piso ') + u.floor}<span class="chip ${u.status.toLowerCase()}">${tr(u.status)}</span></span>
+      <h3>${L(`${u.beds} bedrooms + study`, `${u.beds} dormitorios + estudio`)}</h3>
+      <dl class="unit-specs">
+        <div><dt>${L('Size', 'Área')}</dt><dd>${u.m2} m²</dd></div>
+        <div><dt>${L('View', 'Vista')}</dt><dd>${tr(u.view)}</dd></div>
+        <div><dt>${L('Ceilings', 'Techos')}</dt><dd>3.2 m</dd></div>
+      </dl>
+      <div class="unit-price"><small>${L('Price · full payment', 'Precio · pago al contado')}</small><strong>${fmt(u.price)}</strong></div>
+      <button type="button" class="btn btn-primary" id="unitCta">${u.status === 'Reserved' ? L('Join the waiting list', 'Unirme a la lista de espera') : L('Reserve with S/ 5,000', 'Reservar con S/ 5,000')}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <p class="note">${L(`${avail} of ${UNITS.length} residences available.`, `${avail} de ${UNITS.length} residencias disponibles.`)}</p>`;
+    $('unitCta').addEventListener('click', () => goContact('Luxury residence in an American Style Building', L(
+      `I'm interested in residence ${u.unit} at The Madison Residences (${u.beds} bedrooms + study, ${u.m2} m², ${fmt(u.price)}).`,
+      `Me interesa la residencia ${u.unit} de The Madison Residences (${u.beds} dormitorios + estudio, ${u.m2} m², ${fmt(u.price)}).`)));
   };
-  document.querySelectorAll('[data-beds]').forEach(b => b.addEventListener('click', () => {
-    beds = b.dataset.beds; document.querySelectorAll('[data-beds]').forEach(x => x.classList.toggle('on', x === b)); renderUnits();
-  }));
-  $('onlyAvail').addEventListener('change', renderUnits);
-  document.querySelectorAll('[data-sort]').forEach(b => b.addEventListener('click', () => {
-    sortDir = sortKey === b.dataset.sort ? -sortDir : 1; sortKey = b.dataset.sort;
-    document.querySelectorAll('[data-sort]').forEach(x => { x.classList.toggle('sorted', x === b); x.classList.toggle('asc', x === b && sortDir === 1); x.classList.toggle('desc', x === b && sortDir === -1); });
-    renderUnits();
-  }));
+
+  // Lista completa del estándar
+  const stdDialog = $('stdDialog');
+  $('stdAll').addEventListener('click', () => stdDialog.showModal());
 
   // ---------- Estudio de fachada ----------
   const facade = $('facade');
@@ -1807,17 +1931,6 @@
   $('facadeCta').addEventListener('click', () => goContact('Single Family House', L(
     `I'd like a Single Family House with ${pick.siding} siding, ${pick.trim} trim, a ${pick.roof} roof and a ${pick.door} front door${$('stoneBase').checked ? ', with a stone base' : ''}.`,
     `Quisiera una Single Family House con revestimiento ${pick.siding}, molduras ${pick.trim}, techo ${pick.roof} y puerta ${pick.door}${$('stoneBase').checked ? ', con base de piedra' : ''}.`)));
-
-  // ---------- Estándar: pestañas por categoría ----------
-  document.querySelectorAll('[data-std]').forEach(b => {
-    const panel = document.querySelector(`[data-std-panel="${b.dataset.std}"]`);
-    b.insertAdjacentHTML('beforeend', `<span class="n">${panel.children.length}</span>`);
-    b.addEventListener('click', () => {
-      document.querySelectorAll('[data-std]').forEach(x => x.setAttribute('aria-selected', x === b));
-      document.querySelectorAll('[data-std-panel]').forEach(p => { p.hidden = p !== panel; });
-      panel.classList.remove('fade'); void panel.offsetWidth; panel.classList.add('fade');
-    });
-  });
 
   // ---------- Estimador de renta ----------
   // Valores de referencia para la vista previa (US$ por m² al mes); reemplazar con datos de mercado
